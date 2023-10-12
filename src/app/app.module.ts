@@ -28,6 +28,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {NgOptimizedImage} from "@angular/common";
+import { SupplierHomeComponent } from './supplier/pages/supplier-home/supplier-home.component';
+import { LoginComponent } from './security/pages/login/login.component';
 /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -44,6 +46,8 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
 @NgModule({
   declarations: [
     AppComponent,
+    SupplierHomeComponent,
+    LoginComponent,
    /* InventoryComponent,
     SignInComponent,
     SignUpComponent,
