@@ -31,4 +31,7 @@ run `cd server`
 
 run `json-server --watch db.json`
 
+## Create a component angular
+run `cd ./path`
 
+run `ng generate component name-component`
