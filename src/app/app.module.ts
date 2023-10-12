@@ -27,6 +27,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {NgOptimizedImage} from "@angular/common";
 /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -75,7 +76,8 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     MatCardModule,
     MatGridListModule,
     MatDividerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    NgOptimizedImage
   ],
   //add the services
   providers: [],

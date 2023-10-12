@@ -1,0 +1,52 @@
+{
+  "admin": [
+    {
+      "id": 1,
+      "name": "Josue",
+      "lastName": "Vilchez",
+      "email": "j.vil@gmail.com",
+      "password": "santamaria",
+      "phoneNumber": 9898989898,
+      "code": "Street Bolivar 257",
+      "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg"
+    }
+  ],
+  "consignee": [
+    {
+      "id": 1,
+      "dni": 99999999,
+      "name": "Diego",
+      "lastName": "Calola",
+      "address": "Street Vicente del Campo 308"
+    },
+    {
+      "id": 2,
+      "dni": 98856565,
+      "name": "Martco",
+      "lastName": "Calola",
+      "address": "Street Vicente del Campo 308"
+    }
+  ],
+  "shipment": [
+    {
+      "name": "Chicha Morada Drink",
+      "category": "Food and Beverage",
+      "image": "https://s3.amazonaws.com/bsalemarket/39452/product/AGU390CHIdefault.jpg",
+      "available": true,
+      "description": "Purple corn drink (600 ml)",
+      "supplierId": 1,
+      "numberOfSales": 100,
+      "id": 1
+    },
+    {
+      "name": "Cola KR Soda",
+      "category": "Food and Beverage",
+      "image": "https://transmarket.pe/wp-content/uploads/2020/06/KR-NARANJA-1700-ML.jpg",
+      "available": true,
+      "description": "Orange flavoured soda (600 ml)",
+      "supplierId": 1,
+      "numberOfSales": 115,
+      "id": 2
+    }
+  ]
+}
