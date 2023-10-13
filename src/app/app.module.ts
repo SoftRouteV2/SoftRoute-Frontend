@@ -30,6 +30,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {NgOptimizedImage} from "@angular/common";
 import { SupplierHomeComponent } from './supplier/pages/supplier-home/supplier-home.component';
 import { LoginComponent } from './security/pages/login/login.component';
+import { NavbarComponent } from './shared/component/navbar/navbar.component';
+import {MatMenuModule} from "@angular/material/menu";
 /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -48,6 +50,7 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     AppComponent,
     SupplierHomeComponent,
     LoginComponent,
+    NavbarComponent,
    /* InventoryComponent,
     SignInComponent,
     SignUpComponent,
@@ -81,7 +84,8 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     MatGridListModule,
     MatDividerModule,
     MatSlideToggleModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatMenuModule
   ],
   //add the services
   providers: [],

@@ -8,7 +8,7 @@ const routes: Routes = [
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component:LoginComponent },
-  { path: 'suppler-home', component:SupplierHomeComponent },
+  { path: 'supplier-home', component:SupplierHomeComponent },
 
 
 ];

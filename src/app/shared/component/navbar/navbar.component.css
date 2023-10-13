@@ -1,0 +1,50 @@
+.navbarc {
+  background-color: #CE86F0;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 5px;
+  width: 300px; /* Ancho del campo de búsqueda, ajusta según tus necesidades */
+}
+.search-input {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 0 auto; /* Esto centrará el campo de búsqueda horizontalmente */
+  width: 50%;
+  border-radius: 15px;
+
+}
+.example-form {
+  padding-top: 20px;
+  min-width: 150px;
+  max-width: 50%;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.mat-spacer {
+  flex: 1 1 auto;
+}
+
+mat-menu {
+  display: none; /* Por defecto, ocultar el menú */
+}
+
+@media screen and (max-width: 768px) {
+  mat-menu {
+    display: block; /* Mostrar el menú cuando la pantalla es lo suficientemente estrecha */
+  }
+}
+
+
