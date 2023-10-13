@@ -1,37 +1,16 @@
-<mat-toolbar class="navbarc">
-  <div class="mat-spacer"></div>
-  <h1>SoftRoute </h1>
-  <div class="mat-spacer"></div>
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Enter tracking number</mat-label>
-      <input type="tel" matInput placeholder="Px434344">
-      <mat-icon matSuffix color="primary">search</mat-icon>
-    </mat-form-field>
-  </form>
-  <div class="mat-spacer"></div>
-  <!-- Mostrar ng-container en pantallas anchas -->
-  <ng-container *ngIf="!isMobileScreen">
-    <ng-container *ngFor="let option of options">
-      <a mat-button [routerLink]="option.path">
-        <mat-icon>{{ option.icon }}</mat-icon>
-        {{ option.title }}
-      </a>
-    </ng-container>
-  </ng-container>
 
-  <!-- Mostrar botón de menú en pantallas estrechas -->
-  <button mat-icon-button *ngIf="isMobileScreen" [matMenuTriggerFor]="menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <ng-container *ngFor="let option of options">
-      <button mat-menu-item [routerLink]="option.path">
-        <mat-icon >{{ option.icon }}</mat-icon>
-        {{ option.title }}
-      </button>
-    </ng-container>
-  </mat-menu>
-</mat-toolbar>
+<div class="card">
+<p-menubar [model]="items" >
+  <ng-template pTemplate="start">
+     <h1>SoftRoute</h1>
+ </ng-template>
+  <ng-template pTemplate="end">
+   <input type="text" pInputText placeholder="Search" class="w-full" />
+  </ng-template>
+ </p-menubar>
+</div>
+
+
+
 
 

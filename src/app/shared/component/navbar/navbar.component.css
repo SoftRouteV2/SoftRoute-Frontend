@@ -1,50 +1,16 @@
-.navbarc {
-  background-color: #CE86F0;
+.card {
+  background: var(--surface-card);
+  padding: 0.2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+::ng-deep .p-menubar {
   color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #CE86F0;
 }
-.search-container {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  padding: 5px;
-  width: 300px; /* Ancho del campo de búsqueda, ajusta según tus necesidades */
-}
-.search-input {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  margin: 0 auto; /* Esto centrará el campo de búsqueda horizontalmente */
-  width: 50%;
-  border-radius: 15px;
-
-}
-.example-form {
-  padding-top: 20px;
-  min-width: 150px;
-  max-width: 50%;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
-}
-
-.mat-spacer {
-  flex: 1 1 auto;
-}
-
-mat-menu {
-  display: none; /* Por defecto, ocultar el menú */
-}
-
-@media screen and (max-width: 768px) {
-  mat-menu {
-    display: block; /* Mostrar el menú cuando la pantalla es lo suficientemente estrecha */
-  }
+.w-full {
+  border-radius:15px;
+  height: 40px;
 }
 
 

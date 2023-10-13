@@ -32,6 +32,10 @@ import { SupplierHomeComponent } from './supplier/pages/supplier-home/supplier-h
 import { LoginComponent } from './security/pages/login/login.component';
 import { NavbarComponent } from './shared/component/navbar/navbar.component';
 import {MatMenuModule} from "@angular/material/menu";
+import { CarouselModule } from 'primeng/carousel';
+import {TagModule} from "primeng/tag";
+import {ButtonModule} from "primeng/button";
+import { MenubarModule } from 'primeng/menubar';
 /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -85,7 +89,11 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     MatDividerModule,
     MatSlideToggleModule,
     NgOptimizedImage,
-    MatMenuModule
+    MatMenuModule,
+    CarouselModule,
+    TagModule,
+    ButtonModule,
+    MenubarModule
   ],
   //add the services
   providers: [],
