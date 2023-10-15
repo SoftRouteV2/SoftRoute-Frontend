@@ -36,6 +36,8 @@ import { CarouselModule } from 'primeng/carousel';
 import {TagModule} from "primeng/tag";
 import {ButtonModule} from "primeng/button";
 import { MenubarModule } from 'primeng/menubar';
+import { SupplierProfileComponent } from './supplier/pages/supplier-profile/supplier-profile.component';
+import {CardModule} from "primeng/card";
 /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -55,6 +57,7 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     SupplierHomeComponent,
     LoginComponent,
     NavbarComponent,
+    SupplierProfileComponent,
    /* InventoryComponent,
     SignInComponent,
     SignUpComponent,
@@ -69,32 +72,33 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     StoreProfileComponent,
     StoreEditProfileComponent,*/
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSortModule,
-    MatCardModule,
-    MatGridListModule,
-    MatDividerModule,
-    MatSlideToggleModule,
-    NgOptimizedImage,
-    MatMenuModule,
-    CarouselModule,
-    TagModule,
-    ButtonModule,
-    MenubarModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatInputModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSortModule,
+        MatCardModule,
+        MatGridListModule,
+        MatDividerModule,
+        MatSlideToggleModule,
+        NgOptimizedImage,
+        MatMenuModule,
+        CarouselModule,
+        TagModule,
+        ButtonModule,
+        MenubarModule,
+        CardModule
+    ],
   //add the services
   providers: [],
   bootstrap: [AppComponent]
