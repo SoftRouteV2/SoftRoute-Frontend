@@ -1,39 +1,35 @@
 <app-navbar></app-navbar>
-<p>supplier-profile works!</p>
 <!-- profile.component.html -->
 <div class="profile-container">
   <div class="portada">
-  <img style="width: 100% ; height: auto;object-fit: cover;" src="https://tutfg.es/wp-content/uploads/2020/11/Portada-blog-Tu-TFG.jpg">
+    <img style="width: 100% ; height: auto;object-fit: cover;" src="https://tutfg.es/wp-content/uploads/2020/11/Portada-blog-Tu-TFG.jpg">
+    <div class="profile-header">
+      <img class="profile-picture" src="https://cdn-icons-png.flaticon.com/512/1053/1053244.png" alt="Foto de perfil">
+    </div>
   </div>
-  <div class="profile-header">
-    <img class="profile-picture" src="https://cdn-icons-png.flaticon.com/512/1053/1053244.png" alt="Foto de perfil">
-    <h2>nombre</h2>
-    <p>Cargo</p>
-  </div>
-  <div>
-    <p-card header="Advanced Card" subheader="Card Subheader" [style]="{ width: '360px' }">
+
+  <div class="card flex justify-content-center">
+    <p-card header="Empresa" subheader="Cargo" [style]="{ width: '100%' }">
       <ng-template pTemplate="header">
-        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+
       </ng-template>
+      <p-button  icon="pi pi-pencil" [rounded]="true" [text]="true" severity="help" [raised]="true" [style]="{ float: 'right' }"></p-button>
+      <p>
+        <i class="pi pi-user"></i> Nombre del Usuario
+      </p>
+      <p>
+        <i class="pi pi-envelope"></i> correo@ejemplo.com
+      </p>
+      <p>
+        <i class="pi pi-phone"></i> (123) 456-7890
+      </p>
+      <p>
+        <i class="pi pi-map-marker"></i> 123 Calle Ejemplo, Ciudad, País
+      </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
         quas!
       </p>
-      <ng-template pTemplate="footer">
-        <p-button label="Save" icon="pi pi-check"></p-button>
-        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button>
-      </ng-template>
     </p-card>
   </div>
-
-  <div class="profile-details">
-    <h3>Detalles del perfil</h3>
-    <ul>
-      <li><strong>Correo Electrónico:</strong> correo </li>
-      <li><strong>Teléfono:</strong> telefono</li>
-      <li><strong>Ubicación:</strong> ubicación </li>
-    </ul>
-  </div>
 </div>
-
-
