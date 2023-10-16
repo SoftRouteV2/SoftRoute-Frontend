@@ -2,7 +2,7 @@
   display: flex;
   align-items: center; /* Alineación vertical en el centro */
   justify-content: center;
-  font-family: Roboto;
+  font-family: Roboto, serif;
   background: #A065F5;
   color: white;
   font-size: 30px;
@@ -109,7 +109,7 @@
 
 .personImage {
   width: 40%; /* Ocupa el 80% del ancho de la primera columna */
-  mim-width: 100px; /* Evita que la imagen se desborde del contenedor */
+  min-width: 100px; /* Evita que la imagen se desborde del contenedor */
   display: block; /* Elimina el espacio en blanco por defecto debajo de la imagen */
   margin: 0 auto; /* Centra horizontalmente la imagen en su contenedor */
   border-radius: 50%

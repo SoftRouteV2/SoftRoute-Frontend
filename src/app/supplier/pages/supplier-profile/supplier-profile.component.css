@@ -24,7 +24,7 @@
   transform: translate(-50%, -50%); /* Centra el contenido en el centro del contenedor */
   border-radius: 50%; /* Crea una forma circular */
   overflow: hidden; /* Recorta cualquier contenido que se extienda más allá del círculo */
-   /* Ajusta el tamaño del círculo según tus necesidades */
+  /* Ajusta el tamaño del círculo según tus necesidades */
   height: 70%;
   min-height: 80px;
 
@@ -55,6 +55,9 @@
 .profile-details li {
   margin-bottom: 10px;
 }
+
+
+
 
 
 

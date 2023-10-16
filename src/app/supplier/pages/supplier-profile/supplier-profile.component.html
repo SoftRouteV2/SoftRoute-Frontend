@@ -8,12 +8,50 @@
     </div>
   </div>
 
+
+
   <div class="card flex justify-content-center">
     <p-card header="Empresa" subheader="Cargo" [style]="{ width: '100%' }">
       <ng-template pTemplate="header">
 
       </ng-template>
-      <p-button  icon="pi pi-pencil" [rounded]="true" [text]="true" severity="help" [raised]="true" [style]="{ float: 'right' }"></p-button>
+      <div>
+        <p-button (click)="showDialog()" icon="pi pi-pencil" [rounded]="true" [text]="true" severity="help" [raised]="true" [style]="{ float: 'right' }"></p-button>
+        <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' ,'min-width':'300px'}">
+          <ng-template pTemplate="header">
+            <h1>Edit Profile</h1>
+          </ng-template>
+          <div class="card">
+            <div class="flex flex-wrap gap-3 mb-4">
+
+              <div class="flex-auto">
+                <label for="name" class="font-bold block mb-2"> Name </label>
+                <input pInputText id="name"  class="w-full" />
+              </div>
+              <div class="flex-auto">
+                <label for="email" class="font-bold block mb-2"> Email </label>
+                <input pInputText id="email"  class="w-full" />
+              </div>
+              <div class="flex-auto">
+                <label for="phone" class="font-bold block mb-2"> Phone </label>
+                <input pInputText id="phone" pKeyFilter="num" class="w-full" />
+              </div>
+              <div class="flex-auto">
+                <label for="address" class="font-bold block mb-2"> Address </label>
+                <input pInputText id="address"  class="w-full" />
+              </div>
+              <div class="flex-auto">
+                <label for="photo" class="font-bold block mb-2"> Photo </label>
+                <input pInputText id="photo"  class="w-full" />
+              </div>
+            </div>
+          </div>
+          <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="visible = false" label="Accept" styleClass="p-button-text"></p-button>
+          </ng-template>
+        </p-dialog>
+
+      </div>
       <p>
         <i class="pi pi-user"></i> Nombre del Usuario
       </p>

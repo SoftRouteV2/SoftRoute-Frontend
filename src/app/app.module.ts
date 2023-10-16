@@ -15,29 +15,21 @@ import { SupplierProfileComponent } from './supplier/pages/supplier-profile/supp
 */
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatTableModule} from "@angular/material/table";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatInputModule} from "@angular/material/input";
-import {MatButtonModule} from "@angular/material/button";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule} from "@angular/material/icon";
-import {MatSortModule} from "@angular/material/sort";
-import {MatCardModule} from "@angular/material/card";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatDividerModule} from "@angular/material/divider";
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+
 import {NgOptimizedImage} from "@angular/common";
 import { SupplierHomeComponent } from './supplier/pages/supplier-home/supplier-home.component';
 import { LoginComponent } from './security/pages/login/login.component';
 import { NavbarComponent } from './shared/component/navbar/navbar.component';
-import {MatMenuModule} from "@angular/material/menu";
 import { CarouselModule } from 'primeng/carousel';
 import {TagModule} from "primeng/tag";
 import {ButtonModule} from "primeng/button";
 import { MenubarModule } from 'primeng/menubar';
 import { SupplierProfileComponent } from './supplier/pages/supplier-profile/supplier-profile.component';
 import {CardModule} from "primeng/card";
+import {ToastModule} from "primeng/toast";
+import {DialogModule} from "primeng/dialog";
+import { KeyFilterModule } from 'primeng/keyfilter';
+import { InputTextModule } from 'primeng/inputtext';
 /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -72,33 +64,25 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     StoreProfileComponent,
     StoreEditProfileComponent,*/
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatInputModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatSortModule,
-        MatCardModule,
-        MatGridListModule,
-        MatDividerModule,
-        MatSlideToggleModule,
-        NgOptimizedImage,
-        MatMenuModule,
-        CarouselModule,
-        TagModule,
-        ButtonModule,
-        MenubarModule,
-        CardModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+    NgOptimizedImage,
+    CarouselModule,
+    TagModule,
+    ButtonModule,
+    MenubarModule,
+    CardModule,
+    ToastModule,
+    DialogModule,
+    KeyFilterModule,
+    InputTextModule
+  ],
   //add the services
   providers: [],
   bootstrap: [AppComponent]
