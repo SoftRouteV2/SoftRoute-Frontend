@@ -7,17 +7,24 @@
 </mat-toolbar>-->
 
 
-<body>
+<body class="flex flex-column justify-content-center min-h-screen">
 <header>
   <h1><b>SoftRoute</b></h1>
   <h2>La plataforma de envios</h2>
 </header>
 <main>
-  <button mat-raised-button class="but" >ADMINISTRATOR</button>
-  <button mat-raised-button class="but" >CLIENT</button>
-  <img src="/assets/img/logo1.png" alt="">
+    <p-button (onClick)="navigateToSignInAdministrator()" class="m-2" label="ADMINISTRATOR" [style]="{ width: '30vw' ,'min-width':'300px' }"></p-button>
+    <p-button  (onClick)="navigateToSignInClient()" class="m-2" label="CLIENT"[style]="{ width: '30vw' ,'min-width':'300px'}"></p-button>
+
+  <img class=" w-auto" src="/assets/img/logo1.png" alt="">
 
 </main>
+<footer class="flex flex-wrap align-items-center justify-content-center pt-5 pb-5">
+  <div class="text-center mb-5">
+    <span class="text-600 font-medium line-height-3">Don't have an account?</span>
+    <a (click)="navigateToSignUp()" class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
+  </div>
+</footer>
 
 
 

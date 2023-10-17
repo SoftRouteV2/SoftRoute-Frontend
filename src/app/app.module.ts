@@ -30,6 +30,10 @@ import {ToastModule} from "primeng/toast";
 import {DialogModule} from "primeng/dialog";
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputTextModule } from 'primeng/inputtext';
+import { SignUpComponent } from './security/pages/sign-up/sign-up.component';
+import {CheckboxModule} from "primeng/checkbox";
+import { SignInAdministratorComponent } from './security/pages/sign-in-administrator/sign-in-administrator.component';
+import { SignInClientComponent } from './security/pages/sign-in-client/sign-in-client.component';
 /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -50,6 +54,9 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     LoginComponent,
     NavbarComponent,
     SupplierProfileComponent,
+    SignUpComponent,
+    SignInAdministratorComponent,
+    SignInClientComponent,
    /* InventoryComponent,
     SignInComponent,
     SignUpComponent,
@@ -81,7 +88,8 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     ToastModule,
     DialogModule,
     KeyFilterModule,
-    InputTextModule
+    InputTextModule,
+    CheckboxModule
   ],
   //add the services
   providers: [],
