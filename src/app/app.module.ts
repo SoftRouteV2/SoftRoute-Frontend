@@ -14,7 +14,7 @@ import {SupplierHomeComponent} from './supplier/pages/supplier-home/supplier-hom
 import { SupplierProfileComponent } from './supplier/pages/supplier-profile/supplier-profile.component';
 */
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 
 import {NgOptimizedImage} from "@angular/common";
 import { SupplierHomeComponent } from './supplier/pages/supplier-home/supplier-home.component';
@@ -34,6 +34,9 @@ import { SignUpComponent } from './security/pages/sign-up/sign-up.component';
 import {CheckboxModule} from "primeng/checkbox";
 import { SignInAdministratorComponent } from './security/pages/sign-in-administrator/sign-in-administrator.component';
 import { SignInClientComponent } from './security/pages/sign-in-client/sign-in-client.component';
+import { CustomerTrackingComponent } from './tracking/pages/customer-tracking/customer-tracking.component';
+import { MapLocationComponent } from './shared/component/map-location/map-location.component';
+import {ReactiveFormsModule} from  '@angular/forms';
 /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -57,6 +60,8 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     SignUpComponent,
     SignInAdministratorComponent,
     SignInClientComponent,
+    CustomerTrackingComponent,
+    MapLocationComponent,
    /* InventoryComponent,
     SignInComponent,
     SignUpComponent,
@@ -76,9 +81,7 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule,
     ReactiveFormsModule,
-
     NgOptimizedImage,
     CarouselModule,
     TagModule,

@@ -1,0 +1,31 @@
+<div class="flex align-content-center justify-content-center ">
+<div class="surface-card p-4 shadow-2 border-round w-auto lg:w-6">
+  <h1>Mapa</h1>
+
+  <div class="card">
+    <form [formGroup]="formMapas" (ngSubmit)="onSubmit()">
+      <div class="  m-3 ">
+        <input class="w-full border-round  font-bold p-2 flex " type="text" #inputPlaces id="inputPlaces"   formControlName="busqueda">
+      </div>
+
+      <div class="flex flex-wrap justify-content-center gap-3">
+        <div class="flex w-full justify-content-center">
+          <img class="sb-title-icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/location_pin/v5/24px.svg"
+               alt="">
+        </div>
+        <input class="w-12rem" type="text" placeholder="Direccion"  formControlName="direccion"/>
+        <input class="w-12rem" type="text" placeholder="Edificio, departamento, piso (opcional)" formControlName="referencia"/>
+        <input class="w-12rem" type="text" placeholder="Ciudad"  formControlName="ciudad"/>
+        <input class="w-12rem" type="text" placeholder="Provincia"  formControlName="provincia"/>
+        <input class="w-12rem" type="text"  placeholder="Region" formControlName="region" />
+
+        <div class="flex w-full justify-content-center">
+          <button class="bg-primary border-round  font-bold p-2 flex" type="submit">Guardar</button>
+
+        </div>
+        <div class="m-3 surface-card h-20rem w-full shadow-10 border-round" #divMap></div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>

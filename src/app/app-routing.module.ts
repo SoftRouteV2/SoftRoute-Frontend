@@ -6,6 +6,7 @@ import {SupplierProfileComponent} from "./supplier/pages/supplier-profile/suppli
 import {SignUpComponent} from "./security/pages/sign-up/sign-up.component";
 import {SignInAdministratorComponent} from "./security/pages/sign-in-administrator/sign-in-administrator.component";
 import {SignInClientComponent} from "./security/pages/sign-in-client/sign-in-client.component";
+import {CustomerTrackingComponent} from "./tracking/pages/customer-tracking/customer-tracking.component";
 
 
 export const routes = {
@@ -15,6 +16,7 @@ export const routes = {
   supplierProfile: 'supplier-profile',
   signInAdministrator: 'sign-in-administrator',
   signInClient: 'sign-in-client',
+  customerTracking: 'customer-tracking'
 };
 const appRoutes: Routes = [
   { path: '', redirectTo: routes.login, pathMatch: 'full' },
@@ -24,6 +26,7 @@ const appRoutes: Routes = [
   { path: routes.supplierProfile, component:SupplierProfileComponent },
   { path: routes.signInAdministrator, component:SignInAdministratorComponent },
   { path: routes.signInClient, component:SignInClientComponent },
+  { path: routes.customerTracking, component:CustomerTrackingComponent },
 
 
 ];

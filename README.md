@@ -35,3 +35,8 @@ run `json-server --watch db.json`
 run `cd ./path`
 
 run `ng generate component name-component`
+
+## Install library de google maps
+run ` npm i @types/googlemaps`
+
+
