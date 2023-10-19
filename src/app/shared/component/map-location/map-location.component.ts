@@ -44,11 +44,10 @@ export class MapLocationComponent implements OnInit{
     console.log("Datos del formulario: ", this.formMapas.value)
   };
   private cargarAutocomplete() {
-
     // const autocomplete = new google.maps.places.Autocomplete(this.renderer.selectRootElement(this.inputPlaces.nativeElement), { })
     const autocomplete = new google.maps.places.Autocomplete(this.renderer.selectRootElement(this.inputPlaces.nativeElement), {
       componentRestrictions: {
-        country: ["CL"]
+        country: ["PE"]
       },
       fields: ["address_components", "geometry"],
       types: ["address"],

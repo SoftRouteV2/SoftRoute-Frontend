@@ -1,14 +1,53 @@
 {
-  "admin": [
+  "Company": [
     {
       "id": 1,
-      "name": "Josue",
-      "lastName": "Vilchez",
-      "email": "j.vil@gmail.com",
-      "password": "santamaria",
-      "phoneNumber": 9898989898,
-      "code": "Street Bolivar 257",
+      "name": "Currier Prime",
+      "email": "priem@hotmail.com",
+      "direction": "Street Bolivar 257",
+      "phone": 9898989898,
+      "RUC": 123456789,
+      "logo": "j.vil@gmail.com",
       "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg"
+    },
+    {
+      "id": 2,
+      "name": "My Currier",
+      "email": "santamaria@gmail.com",
+      "direction": "Street Simon 257",
+      "phone": 99099099,
+      "RUC": 987654321,
+      "logo": "j.vil@gmail.com",
+      "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg"
+    }
+  ],
+  "employee": [
+    {
+      "id": 1,
+      "name": "Alberto Perez",
+      "email": "ja.vil@gmail.com",
+      "password": "123456abc",
+      "phone": 987987987,
+      "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg",
+      "companyId": 1
+    },
+    {
+      "id": 2,
+      "name": "Marco munt",
+      "email": "j.vil@gmail.com",
+      "password": "123456ab",
+      "phone": 963963963,
+      "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg",
+      "companyId": 1
+    },
+    {
+      "id":3,
+      "name": "Silvia Montez",
+      "email": "silvia.vil@gmail.com",
+      "password": "santamaria",
+      "phone": 951900051,
+      "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg",
+      "companyId": 2
     }
   ],
   "consignee": [
