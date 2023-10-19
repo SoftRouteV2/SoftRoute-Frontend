@@ -6,7 +6,7 @@
       "email": "priem@hotmail.com",
       "direction": "Street Bolivar 257",
       "phone": 9898989898,
-      "RUC": 123456789,
+      "ruc": 123456789,
       "logo": "j.vil@gmail.com",
       "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg"
     },
@@ -16,7 +16,7 @@
       "email": "santamaria@gmail.com",
       "direction": "Street Simon 257",
       "phone": 99099099,
-      "RUC": 987654321,
+      "ruc": 987654321,
       "logo": "j.vil@gmail.com",
       "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg"
     }
