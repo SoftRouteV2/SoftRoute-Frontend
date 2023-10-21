@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {routes} from "../../../app-routing.module";
+import {AuthService} from "../../services/auth.service";
+
 
 
 @Component({
@@ -8,14 +10,23 @@ import {routes} from "../../../app-routing.module";
   templateUrl: './sign-in-administrator.component.html',
   styleUrls: ['./sign-in-administrator.component.css']
 })
-export class SignInAdministratorComponent {
+export class SignInAdministratorComponent{
 
-  constructor(private router: Router) { }
-
-  navigateToHomeSupplier() {
-    this.router.navigate([routes.supplierHome]);
+  email: string='';
+  password: string='';
+  employees: any[] =[];
+  constructor(private router: Router, private authService: AuthService) {
   }
 
+  navigateSignInHome() {
+    this.authService.loginEmployee(this.email, this.password).subscribe((isAuthenticated: boolean) => {
+      if (isAuthenticated) {
+        this.router.navigate([routes.supplierHome]);
+      } else {
+        console.log("No coincide");
+      }
+    });
+  }
   navigateToSignUp() {
     this.router.navigate([routes.signUp]);
   }
