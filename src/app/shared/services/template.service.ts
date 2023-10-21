@@ -44,8 +44,8 @@ export class TemplateService<T> {
         catchError(this.handleError));
   }
 
-  getAll(): Observable<T> {
-    return this.http.get<T>(this.basePath, this.httpOptions)
+  getAll(): Observable<T[]> {
+    return this.http.get<T[]>(this.basePath, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

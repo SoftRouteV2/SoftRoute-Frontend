@@ -1,34 +1,34 @@
 {
-  "Company": [
+  "Companies": [
     {
       "id": 1,
       "name": "Currier Prime",
       "email": "priem@hotmail.com",
-      "direction": "Street Bolivar 257",
+      "address": "Street Bolivar 257",
       "phone": 9898989898,
       "ruc": 123456789,
       "logo": "j.vil@gmail.com",
-      "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg"
+      "image": "https://alexissaavedra.com/wp-content/uploads/2022/05/Olva-Courier.png"
     },
     {
       "id": 2,
       "name": "My Currier",
       "email": "santamaria@gmail.com",
-      "direction": "Street Simon 257",
+      "address": "Street Simon 257",
       "phone": 99099099,
       "ruc": 987654321,
       "logo": "j.vil@gmail.com",
-      "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg"
+      "image": "https://alexissaavedra.com/wp-content/uploads/2022/05/Olva-Courier.png"
     }
   ],
-  "employee": [
+  "employees": [
     {
       "id": 1,
-      "name": "Alberto Perez",
+      "name": "Alberto Perezco",
       "email": "ja.vil@gmail.com",
       "password": "123456abc",
       "phone": 987987987,
-      "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCp_ByMCZW8m0s3KmAbIENDvR2Zc_HkBJyYw&usqp=CAU",
       "companyId": 1
     },
     {
@@ -41,13 +41,40 @@
       "companyId": 1
     },
     {
-      "id":3,
+      "id": 3,
       "name": "Silvia Montez",
       "email": "silvia.vil@gmail.com",
       "password": "santamaria",
       "phone": 951900051,
       "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg",
       "companyId": 2
+    },
+    {
+      "id": 4,
+      "name": "aa",
+      "email": "aa",
+      "password": "123",
+      "phone": 987,
+      "image": "https://cdn-icons-png.flaticon.com/512/3135/3135768.png",
+      "companyId": 1
+    },
+    {
+      "id": 5,
+      "name": "bb",
+      "email": "bb",
+      "password": "123",
+      "phone": 123345678,
+      "image": "https://cdn-icons-png.flaticon.com/512/3135/3135768.png",
+      "companyId": 1
+    },
+    {
+      "id": 6,
+      "name": "pp",
+      "email": "pp",
+      "password": "123",
+      "phone": 12,
+      "image": "https://cdn-icons-png.flaticon.com/512/3135/3135768.png",
+      "companyId": 1
     }
   ],
   "consignee": [
