@@ -36,7 +36,10 @@ import { SignInAdministratorComponent } from './security/pages/sign-in-administr
 import { SignInClientComponent } from './security/pages/sign-in-client/sign-in-client.component';
 import { CustomerTrackingComponent } from './tracking/pages/customer-tracking/customer-tracking.component';
 import { MapLocationComponent } from './shared/component/map-location/map-location.component';
-import {ReactiveFormsModule} from  '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import {MessageService} from "primeng/api";
 /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -92,10 +95,13 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     DialogModule,
     KeyFilterModule,
     InputTextModule,
-    CheckboxModule
+    CheckboxModule,
+    FormsModule,
+    MessageModule,
+    MessagesModule
   ],
   //add the services
-  providers: [],
+  providers: [MessageService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
