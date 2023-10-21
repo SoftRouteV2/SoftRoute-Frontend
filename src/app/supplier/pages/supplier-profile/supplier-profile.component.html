@@ -2,16 +2,16 @@
 <!-- profile.component.html -->
 <div class="profile-container">
   <div class="portada">
-    <img style="width: 100% ; height: auto;object-fit: cover;" src="https://tutfg.es/wp-content/uploads/2020/11/Portada-blog-Tu-TFG.jpg">
+    <img style="width: 100% ; height: auto;object-fit: cover;" src="{{companyData.image}}">
     <div class="profile-header">
-      <img class="profile-picture" src="https://cdn-icons-png.flaticon.com/512/1053/1053244.png" alt="Foto de perfil">
+      <img class="profile-picture" src="{{user.image}}" alt="Foto de perfil">
     </div>
   </div>
 
 
 
   <div class="card flex justify-content-center">
-    <p-card header="Empresa" subheader="Cargo" [style]="{ width: '100%' }">
+    <p-card header="{{companyData.name}}" subheader="Admin" [style]="{ width: '100%' }">
       <ng-template pTemplate="header">
 
       </ng-template>
@@ -26,43 +26,43 @@
 
               <div class="flex-auto">
                 <label for="name" class="font-bold block mb-2"> Name </label>
-                <input pInputText id="name"  class="w-full" />
+                <input  id="name"  class="w-full" [(ngModel)]="user.name"/>
               </div>
               <div class="flex-auto">
                 <label for="email" class="font-bold block mb-2"> Email </label>
-                <input pInputText id="email"  class="w-full" />
+                <input  id="email"  class="w-full" [(ngModel)]="user.email"/>
               </div>
               <div class="flex-auto">
                 <label for="phone" class="font-bold block mb-2"> Phone </label>
-                <input pInputText id="phone" pKeyFilter="num" class="w-full" />
+                <input  id="phone" type="number" class="w-full" [(ngModel)]="user.phone"/>
               </div>
               <div class="flex-auto">
-                <label for="address" class="font-bold block mb-2"> Address </label>
-                <input pInputText id="address"  class="w-full" />
+                <label for="password" class="font-bold block mb-2"> Password </label>
+                <input  id="password" type="password" class="w-full" [(ngModel)]="user.password" />
               </div>
               <div class="flex-auto">
                 <label for="photo" class="font-bold block mb-2"> Photo </label>
-                <input pInputText id="photo"  class="w-full" />
+                <input  id="photo"  class="w-full" [(ngModel)]="user.image"/>
               </div>
             </div>
           </div>
           <ng-template pTemplate="footer">
-            <p-button icon="pi pi-check" (click)="visible = false" label="Accept" styleClass="p-button-text"></p-button>
+            <p-button icon="pi pi-check"  (click)="updateEmployee(); visible = false"  label="Accept" styleClass="p-button-text"></p-button>
           </ng-template>
         </p-dialog>
 
       </div>
       <p>
-        <i class="pi pi-user"></i> Nombre del Usuario
+        <i class="pi pi-user"></i> {{user.name}}
       </p>
       <p>
-        <i class="pi pi-envelope"></i> correo@ejemplo.com
+        <i class="pi pi-envelope"></i> {{user.email}}
       </p>
       <p>
-        <i class="pi pi-phone"></i> (123) 456-7890
+        <i class="pi pi-phone"></i> (+51){{user.phone}}
       </p>
       <p>
-        <i class="pi pi-map-marker"></i> 123 Calle Ejemplo, Ciudad, País
+        <i class="pi pi-map-marker"></i>{{companyData.address}}
       </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
