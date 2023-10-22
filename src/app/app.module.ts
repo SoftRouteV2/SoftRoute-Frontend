@@ -40,6 +40,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import {MessageService} from "primeng/api";
+import { TrackingShipmentComponent } from './tracking/pages/tracking-shipment/tracking-shipment.component';
+import { ToolbarModule } from 'primeng/toolbar';
+
 /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -65,6 +68,7 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     SignInClientComponent,
     CustomerTrackingComponent,
     MapLocationComponent,
+    TrackingShipmentComponent,
    /* InventoryComponent,
     SignInComponent,
     SignUpComponent,
@@ -98,7 +102,8 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     CheckboxModule,
     FormsModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    ToolbarModule
   ],
   //add the services
   providers: [MessageService,],
