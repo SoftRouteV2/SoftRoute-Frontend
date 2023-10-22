@@ -1,0 +1,16 @@
+.card {
+  background: var(--surface-card);
+  padding: 0.2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+::ng-deep .p-menubar {
+  color: white;
+  background-color: #CE86F0;
+}
+.w-full {
+  border-radius:15px;
+  height: 40px;
+}
+
+

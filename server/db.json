@@ -1,0 +1,118 @@
+{
+  "Companies": [
+    {
+      "id": 1,
+      "name": "Currier Prime",
+      "email": "priem@hotmail.com",
+      "address": "Street Bolivar 257",
+      "phone": 9898989898,
+      "ruc": 123456789,
+      "logo": "j.vil@gmail.com",
+      "image": "https://alexissaavedra.com/wp-content/uploads/2022/05/Olva-Courier.png"
+    },
+    {
+      "id": 2,
+      "name": "My Currier",
+      "email": "santamaria@gmail.com",
+      "address": "Street Simon 257",
+      "phone": 99099099,
+      "ruc": 987654321,
+      "logo": "j.vil@gmail.com",
+      "image": "https://alexissaavedra.com/wp-content/uploads/2022/05/Olva-Courier.png"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "Alberto Perezco",
+      "email": "ja.vil@gmail.com",
+      "password": "123456abc",
+      "phone": 987987987,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCp_ByMCZW8m0s3KmAbIENDvR2Zc_HkBJyYw&usqp=CAU",
+      "companyId": 1
+    },
+    {
+      "id": 2,
+      "name": "Marco munt",
+      "email": "j.vil@gmail.com",
+      "password": "123456ab",
+      "phone": 963963963,
+      "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg",
+      "companyId": 1
+    },
+    {
+      "id": 3,
+      "name": "Silvia Montez",
+      "email": "silvia.vil@gmail.com",
+      "password": "santamaria",
+      "phone": 951900051,
+      "image": "https://www.tiendasmass.com.pe/img/Exterior.eb7bd7f8.jpg",
+      "companyId": 2
+    },
+    {
+      "id": 4,
+      "name": "aa",
+      "email": "aa",
+      "password": "123",
+      "phone": 987,
+      "image": "https://cdn-icons-png.flaticon.com/512/3135/3135768.png",
+      "companyId": 1
+    },
+    {
+      "id": 5,
+      "name": "bb",
+      "email": "bb",
+      "password": "123",
+      "phone": 123345678,
+      "image": "https://cdn-icons-png.flaticon.com/512/3135/3135768.png",
+      "companyId": 1
+    },
+    {
+      "id": 6,
+      "name": "pp",
+      "email": "pp",
+      "password": "123",
+      "phone": 12,
+      "image": "https://cdn-icons-png.flaticon.com/512/3135/3135768.png",
+      "companyId": 1
+    }
+  ],
+  "consignee": [
+    {
+      "id": 1,
+      "dni": 99999999,
+      "name": "Diego",
+      "lastName": "Calola",
+      "address": "Street Vicente del Campo 308"
+    },
+    {
+      "id": 2,
+      "dni": 98856565,
+      "name": "Martco",
+      "lastName": "Calola",
+      "address": "Street Vicente del Campo 308"
+    }
+  ],
+  "shipment": [
+    {
+      "name": "Chicha Morada Drink",
+      "category": "Food and Beverage",
+      "image": "https://s3.amazonaws.com/bsalemarket/39452/product/AGU390CHIdefault.jpg",
+      "available": true,
+      "description": "Purple corn drink (600 ml)",
+      "supplierId": 1,
+      "numberOfSales": 100,
+      "id": 1
+    },
+    {
+      "name": "Cola KR Soda",
+      "category": "Food and Beverage",
+      "image": "https://transmarket.pe/wp-content/uploads/2020/06/KR-NARANJA-1700-ML.jpg",
+      "available": true,
+      "description": "Orange flavoured soda (600 ml)",
+      "supplierId": 1,
+      "numberOfSales": 115,
+      "id": 2
+    }
+  ]
+}

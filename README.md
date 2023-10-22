@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Json Server
+run `cd server`
+
+run `json-server --watch db.json`
+
+## Create a component angular
+run `cd ./path`
+
+run `ng generate component name-component`
+
+## Install library de google maps
+run ` npm i @types/googlemaps`
+
+

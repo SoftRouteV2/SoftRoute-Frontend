@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+
+<body>
+<div class="title">
+  Tracking
+</div>
+
+<p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+
+  <ng-template pTemplate="item" let-item>
+    <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+      <div class="card-traking">
+        <div class="column1-traking">
+          <img src="https://png.pngtree.com/png-vector/20220410/ourlarge/pngtree-pin-location-icon-with-folded-map-png-image_4537898.png" alt="Imagen" class="map">
+          <!-- Contenido de la primera columna -->
+        </div>
+        <div class="column2-traking">
+          <p class="first-traking">+ manage</p>
+          <p class="second-traking">  Order #1231545454551 </p>
+          <div><p class="third-traking">Processing</p></div>
+          <div style="text-align: right">
+            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-play"></p-button>
+          </div>
+          <!-- Contenido de la segunda columna -->
+        </div>
+      </div>
+
+    </div>
+  </ng-template>
+
+</p-carousel>
+
+<div class="title">
+  History
+</div>
+
+<p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+
+  <ng-template pTemplate="item" let-item>
+    <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+      <div class="card-history">
+        <div class="column1-history">
+          <div style="text-align: left">
+            <p  class="first-history1" >  Order #1231545454551 </p>
+          </div>
+          <div style="text-align: left"><p><b>San Miguel</b></p>
+            <p>03 May 2023</p>
+          </div>
+          <div style="display: flex">
+            <img src="https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png" alt="Imagen" class="personImage">
+            <div style="align-items: center">
+              <p><b>Jorge Lopez</b></p>
+              <p>Delivery Partner</p>
+            </div>
+
+          </div>
+          <!-- Contenido de la primera columna -->
+        </div>
+        <div class="column2-history">
+          <div style="text-align: right"><p class="first-history2">Processing</p></div>
+          <div  ><p><b>San Miguel</b></p>
+            <p>03 May 2023</p>
+          </div>
+
+
+          <div style="text-align: right">
+            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-play"></p-button>
+          </div>
+          <!-- Contenido de la segunda columna -->
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</p-carousel>
+
+</body>
+

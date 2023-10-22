@@ -1,0 +1,172 @@
+.title {
+  display: flex;
+  align-items: center; /* Alineación vertical en el centro */
+  justify-content: center;
+  font-family: Roboto, serif;
+  background: #A065F5;
+  color: white;
+  font-size: 30px;
+  width: 50%;
+  margin-left: 0px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 50px;
+}
+
+/* modelo card-traking*/
+.card-traking {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  text-align: center;
+  max-width: 500px;
+  background-color: #F0E5FF;
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.column1-traking {
+  flex: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente los elementos en la primera columna */
+  padding: -10px;
+  background-color: transparent;
+}
+
+.map {
+  width: 80%; /* Ocupa el 80% del ancho de la primera columna */
+  max-width: 100%; /* Evita que la imagen se desborde del contenedor */
+  display: block; /* Elimina el espacio en blanco por defecto debajo de la imagen */
+  margin: 0 auto; /* Centra horizontalmente la imagen en su contenedor */
+  border-radius: 20px;
+}
+
+.column2-traking {
+  flex: 55%;
+  padding: 10px;
+  background-color: transparent;
+}
+.first-traking {
+  text-align: right;
+}
+.second-traking {
+
+  display: inline-block;
+  padding-block: 5px;
+  padding-right: 50px;
+  padding-left: 10px;
+  background-color: white;
+  border-radius: 10px;
+  color: #8D3EFF;
+}
+
+.third-traking {
+  display: inline-block;
+  padding-block: 5px;
+  padding-inline: 50px;
+  background-color: #8D3EFF;
+  border-radius: 10px;
+  color: white;
+}
+
+/* Estilos para cuando el ancho de la card es menor a 400px */
+
+::ng-deep .p-button {
+  color: white;
+  background-color: #CE86F0;
+}
+
+/* modelo card-history*/
+.card-history {
+  margin-inline: 2.5%;
+  text-align: center;
+  max-width: 500px;
+  background-color: #F0E5FF;
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 20px;
+}
+.column1-history {
+  flex: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente los elementos en la primera columna */
+  padding: -10px;
+  background-color: transparent;
+}
+.first-history1 {
+  display: inline-block;
+  padding-block: 5px;
+  padding-right: 20px;
+  padding-left: 10px;
+  background-color: white;
+  border-radius: 10px;
+  color: #8D3EFF;
+}
+
+.personImage {
+  width: 40%; /* Ocupa el 80% del ancho de la primera columna */
+  min-width: 100px; /* Evita que la imagen se desborde del contenedor */
+  display: block; /* Elimina el espacio en blanco por defecto debajo de la imagen */
+  margin: 0 auto; /* Centra horizontalmente la imagen en su contenedor */
+  border-radius: 50%
+}
+.column2-history {
+  flex: 40%;
+  background-color: transparent;
+}
+.first-history2 {
+  text-align: right;
+  display: inline-block;
+  padding-block: 5px;
+  padding-inline: 5px;
+  background-color: #8D3EFF;
+  border-radius: 10px;
+  color: white;
+}
+
+
+@media screen and (max-width: 400px) {
+
+  .card-history{
+    flex-direction: column; /* Cambia la dirección de flex a columna */
+  }
+
+  /* Cambia la dirección de flex a columna */
+  .card-history .column1 {
+    flex: 100%; /* Ocupa todo el ancho disponible */
+    padding: 0; /* Elimina el padding */
+    max-width: none; /* Elimina la limitación de ancho máximo */
+  }
+
+  .card-history .column2 {
+    flex: 100%; /* Ocupa todo el ancho disponible */
+  }
+
+
+.card-traking {
+  flex-direction: column;
+}
+
+/* Cambia la dirección de flex a columna */
+  .card-traking .column1 {
+  flex: 100%; /* Ocupa todo el ancho disponible */
+  padding: 0; /* Elimina el padding */
+  max-width: none; /* Elimina la limitación de ancho máximo */
+}
+
+  .card-traking .column2 {
+  flex: 100%; /* Ocupa todo el ancho disponible */
+}
+
+}
+
+
+
+
+
+
+

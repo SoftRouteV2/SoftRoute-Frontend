@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+<!-- profile.component.html -->
+<div class="profile-container">
+  <div class="portada">
+    <img style="width: 100% ; height: auto;object-fit: cover;" src="{{companyData.image}}">
+    <div class="profile-header">
+      <img class="profile-picture" src="{{user.image}}" alt="Foto de perfil">
+    </div>
+  </div>
+
+
+
+  <div class="card flex justify-content-center">
+    <p-card header="{{companyData.name}}" subheader="Admin" [style]="{ width: '100%' }">
+      <ng-template pTemplate="header">
+
+      </ng-template>
+      <div>
+        <p-button (click)="showDialog()" icon="pi pi-pencil" [rounded]="true" [text]="true" severity="help" [raised]="true" [style]="{ float: 'right' }"></p-button>
+        <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' ,'min-width':'300px'}">
+          <ng-template pTemplate="header">
+            <h1>Edit Profile</h1>
+          </ng-template>
+          <div class="card">
+            <div class="flex flex-wrap gap-3 mb-4">
+
+              <div class="flex-auto">
+                <label for="name" class="font-bold block mb-2"> Name </label>
+                <input  id="name"  class="w-full" [(ngModel)]="user.name"/>
+              </div>
+              <div class="flex-auto">
+                <label for="email" class="font-bold block mb-2"> Email </label>
+                <input  id="email"  class="w-full" [(ngModel)]="user.email"/>
+              </div>
+              <div class="flex-auto">
+                <label for="phone" class="font-bold block mb-2"> Phone </label>
+                <input  id="phone" type="number" class="w-full" [(ngModel)]="user.phone"/>
+              </div>
+              <div class="flex-auto">
+                <label for="password" class="font-bold block mb-2"> Password </label>
+                <input  id="password" type="password" class="w-full" [(ngModel)]="user.password" />
+              </div>
+              <div class="flex-auto">
+                <label for="photo" class="font-bold block mb-2"> Photo </label>
+                <input  id="photo"  class="w-full" [(ngModel)]="user.image"/>
+              </div>
+            </div>
+          </div>
+          <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check"  (click)="updateEmployee(); visible = false"  label="Accept" styleClass="p-button-text"></p-button>
+          </ng-template>
+        </p-dialog>
+
+      </div>
+      <p>
+        <i class="pi pi-user"></i> {{user.name}}
+      </p>
+      <p>
+        <i class="pi pi-envelope"></i> {{user.email}}
+      </p>
+      <p>
+        <i class="pi pi-phone"></i> (+51){{user.phone}}
+      </p>
+      <p>
+        <i class="pi pi-map-marker"></i>{{companyData.address}}
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
+        quas!
+      </p>
+    </p-card>
+  </div>
+</div>
