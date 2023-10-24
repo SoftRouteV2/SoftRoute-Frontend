@@ -12,6 +12,7 @@ export class AddShipmentComponent {
   senderEmail: string='';
   consigneeName: string='';
   consigneeEmail: string='';
+  selectedDate: Date=new Date();
 
   constructor() { }
 
