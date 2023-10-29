@@ -1,23 +1,55 @@
 <app-navbar></app-navbar>
 
-<div>
-  <label for="description" class="block text-900 font-medium mb-2">Package Information</label>
-  <input id="description" [(ngModel)]="description" type="text" placeholder="Description" pInputText class="w-full mb-3">
+<div class="title">
+  Add Shipment
+</div>
+
+<div class="center-container">
+  <label for="information" class="block text-900 font-medium mb-2">Package Information</label>
+  <mat-select class="custom-input custom-input-field" [(value)]="selectedPackageType"  placeholder="Type of Package">
+    <mat-option *ngFor="let packageType of packageTypes" [value]="packageType">{{packageType}}</mat-option>
+  </mat-select>
+
+
+  <input id="weight" [(ngModel)]="packageWeight" type="number" placeholder="Weight" pInputText class="w-full mb-3 custom-input-field">
+  <input id="quantity" [(ngModel)]="quantity" type="number" placeholder="Quantity" pInputText class="w-full mb-3 custom-input-field ">
+
+  <input id="freight" [(ngModel)]="freight" type="number" placeholder="Freight" pInputText class="w-full mb-3 custom-input-field ">
+  <input id="description" [(ngModel)]="description" type="text" placeholder="Description" pInputText class="w-full mb-3 custom-input-field">
 
 
   <label for="sender" class="block text-900 font-medium mb-2">Sender Information</label>
-  <input id="senderName" [(ngModel)]="senderName" type="text" placeholder="Name" pInputText class="w-full mb-3">
-  <input id="senderEmail" [(ngModel)]="senderEmail" type="text" placeholder="Email" pInputText class="w-full mb-3">
+  <input id="senderName" [(ngModel)]="senderName" type="text" placeholder="Name" pInputText class="w-full mb-3 custom-input-field">
+  <input id="senderEmail" [formControl]="senderEmailFormControl" type="text" placeholder="Email" [(ngModel)]="senderEmail"  pInputText class="w-full mb-3 custom-input-field">
+  <div *ngIf="senderEmailFormControl.hasError('email') && senderEmailFormControl.touched" class="error-text">
+    Please enter a valid email.
+  </div>
 
-  <label for="consigne" class="block text-900 font-medium mb-2">Consignee Information</label>
-  <input id="consigneName" [(ngModel)]="consigneeName" type="text" placeholder="Name" pInputText class="w-full mb-3">
-  <input id="senderEmail" [(ngModel)]="consigneeEmail" type="text" placeholder="Email" pInputText class="w-full mb-3">
+  <label for="consignee" class="block text-900 font-medium mb-2">Consignee Information</label>
+  <input id="consigneeName" [(ngModel)]="consigneeName" type="text" placeholder="Name" pInputText class="w-full mb-3 custom-input-field">
+  <input id="consigneeEmail" [formControl]="consigneeEmailFormControl" type="text" placeholder="Email"  [(ngModel)]="consigneeEmail" pInputText class="w-full mb-3 custom-input-field">
+<div *ngIf="consigneeEmailFormControl.hasError('email') && consigneeEmailFormControl.touched" class="error-text">
+  Please enter a valid email.
+</div>
 
-  <label for="email1" class="block text-900 font-medium mb-2">Destination</label>
+  <mat-select class="custom-input custom-input-field" [(value)]="selectedDocumentType" placeholder="Type of Document">
+    <mat-option *ngFor="let documentType of documentTypes" [value]="documentType">{{documentType}}</mat-option>
+  </mat-select>
+
+  <input id="documentNumber" [(ngModel)]="documentNumber" type="number" placeholder="Document Number" pInputText class="w-full mb-3 custom-input-field ">
+
+
+
+  <label for="destination" class="block text-900 font-medium mb-2">Destination</label>
+
+    <mat-select class="custom-input custom-input-field" [(value)]="selectedDestination"  placeholder="Destination">
+      <mat-option *ngFor="let destination of destinations" [value]="destination">{{destination}}</mat-option>
+    </mat-select>
 
   <label for="date" class="block text-900 font-medium mb-2">Date</label>
-  <input id="date" [(ngModel)]="selectedDate" type="date" placeholder="Date" pInputText class="w-full mb-3">
+  <input id="date" [(ngModel)]="selectedDate" type="date" placeholder="Date" pInputText class="w-full mb-3 custom-input-field">
 
+  <p-button label="Add Shipment"  (onClick)="validateShimentData()" icon="pi pi-send" styleClass="w-full custom-button"></p-button>
 
 
 </div>
