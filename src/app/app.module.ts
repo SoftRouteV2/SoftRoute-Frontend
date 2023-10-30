@@ -41,6 +41,7 @@ import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import {MessageService} from "primeng/api";
 import { AddShipmentComponent } from './shipment/pages/add-shipment/add-shipment.component';
+import { DropdownModule } from 'primeng/dropdown';
   /*import {SuppliersService} from "./supplier/services/suppliers.service";
 import { SupplierEditProfileComponent } from './supplier/pages/supplier-edit-profile/supplier-edit-profile.component';
 import { StoreProfileComponent } from './store/pages/store-profile/store-profile.component';
@@ -100,7 +101,8 @@ import { ProductsSearchComponent } from './store/pages/products-search/products-
     CheckboxModule,
     FormsModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    DropdownModule
   ],
   //add the services
   providers: [MessageService,],

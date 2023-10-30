@@ -3,6 +3,9 @@
   color: white;
 }
 
+.full-width-dropdown {
+  width: 100%;
+}
 
 .custom-input {
    border: 1px solid #ccc;
@@ -21,6 +24,7 @@
 
 .custom-input-field {
   background-color: rgba(98, 0, 238, 0.1);
+  width: 100%;
 
 }
 

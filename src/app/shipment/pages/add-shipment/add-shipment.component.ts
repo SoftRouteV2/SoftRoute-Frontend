@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { SelectItem } from 'primeng/api';
 
 
 @Component({
@@ -15,13 +16,34 @@ export class AddShipmentComponent {
   consigneeName: string='';
   consigneeEmail: string='';
   selectedDate: Date=new Date();
-  destinations = ["Cusco", "Puno", "Lima", "Cajamarca"]
+
+  destinations: SelectItem[] = [
+    { label: 'Cusco', value: 'Cusco' },
+    { label: 'Puno', value: 'Puno' },
+    { label: 'Lima', value: 'Lima' },
+    { label: 'Cajamarca', value: 'Cajamarca' },
+  ];
+
   selectedDestination: string='';
-  documentTypes = ["DNI", "Carnet de extranjeria", "Pasaporte"]
+
+  documentTypes: SelectItem[] = [
+    { label: 'DNI', value: 'DNI' },
+    { label: 'Carnet de extranjeria', value: 'Carnet de extranjeria' },
+    { label: 'Pasaporte', value: 'Pasaporte' }
+  ];
+
   selectedDocumentType: string='';
-  packageTypes = ["Caja", "Sobre", "Bolsa"]
+  packageTypes: SelectItem[] = [
+    { label: 'Caja', value: 'Caja' },
+    { label: 'Sobre', value: 'Sobre' },
+    { label: 'Bolsa', value: 'Bolsa' }
+  ];
   selectedPackageType: string='';
   packageWeight: number | undefined;
+  packageHeight: number | undefined;
+  packageWidth: number | undefined;
+  packageLength: number | undefined;
+
   quantity: number| undefined;
   freight: number | undefined;
   documentNumber: number | undefined;
@@ -39,6 +61,19 @@ export class AddShipmentComponent {
 
   validateShimentData(): void {
 
+      console.log(this.selectedPackageType);
+      console.log(this.packageWeight);
+      console.log(this.quantity);
+      console.log(this.freight);
+      console.log(this.description);
+      console.log(this.senderName);
+      console.log(this.senderEmail);
+      console.log(this.consigneeName);
+      console.log(this.consigneeEmail);
+      console.log(this.selectedDocumentType);
+      console.log(this.documentNumber);
+      console.log(this.selectedDestination);
+      console.log(this.selectedDate);
 
   }
 
