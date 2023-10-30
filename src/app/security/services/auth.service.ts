@@ -1,44 +1,55 @@
 import { Injectable } from '@angular/core';
-import {TemplateService} from "../../shared/services/template.service";
-import {catchError, Observable, retry, throwError} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import { Observable, throwError } from 'rxjs';
+import {catchError, retry} from "rxjs/operators";
+import {HttpClient,  HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Employee} from "../../supplier/model/employee";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService extends TemplateService<Employee>{
+export class AuthService{
 
-  private user:Employee | null=null;
-  constructor(http:HttpClient) {
-    super(http);
-    this.basePath = 'http://localhost:3000/api/v1/employees';
+  private employee:Employee | null=null;
+
+  baseUrl = 'http://localhost:8081/api/v1/employee';
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+  
+  constructor(private http: HttpClient) { }
+
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.log(`An error occurred: ${error.error.message}`);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, body was: ${error.error}`
+      );
+    }
+    return throwError(
+      'something happened with request, please try again later'
+    );
   }
+
+
   // Método para el inicio de sesión
-  loginEmployee(email: string, password: string): Observable<boolean> {
-    return new Observable<boolean>((observer) => {
-      this.getAll().subscribe((employees: Employee[]) => {
-        const matchingEmployee = employees.find((employee: Employee) => {
-          return employee.email === email && employee.password === password;
-        });
 
-        if (matchingEmployee) {
-          this.user = matchingEmployee;
-          console.log('Inicio de sesión exitoso');
-          console.log('Nombre del empleado: ' + matchingEmployee.name);
-          observer.next(true); // Emite un valor `true` al observador
-          observer.complete();
-        } else {
-          console.log('No se encontró un empleado con el email y la contraseña coincidentes');
-          observer.next(false); // Emite un valor `false` al observador
-          observer.complete();
-        }
-      });
-    });
+  // Obtener un Employee por email
+  loginEmployeeByEmail(email: string): Observable<Employee> {
+    const url = `${this.baseUrl}/email/${email}`;
+    return this.http.get<Employee>(url, this.httpOptions).pipe(retry(2), catchError(this.handleError));
   }
 
-  getEmployee():Employee | null{
-    return this.user;
+  getEmployee(): Employee | null {
+    return this.employee;
+  }
+
+  getEmployeeById(id: number): Observable<Employee> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<Employee>(url, this.httpOptions).pipe(retry(2), catchError(this.handleError));
   }
 
 }
