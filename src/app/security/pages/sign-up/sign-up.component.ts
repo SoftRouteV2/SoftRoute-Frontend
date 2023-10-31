@@ -23,9 +23,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit{
-  rucCompany: number=0;
-  password2: any;
-  employees: Employee[] = [];
+
   newEmployee: Employee;
 
   companies: Array<Company> = [];
@@ -37,13 +35,17 @@ export class SignUpComponent implements OnInit{
     private authService : AuthService, private formBuilder: FormBuilder) {
 
     this.registerForm = this.formBuilder.group({
-      company: new FormControl('', Validators.required),
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      phone: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required),
-    });
+      employeeName: new FormControl('', Validators.required), updateOn: 'change',
+      email: new FormControl('', {validators: [Validators.required, Validators.email], updateOn: 'change'}),
+      dni: new FormControl('', {validators: [Validators.required, Validators.minLength(8), Validators.maxLength(8)], updateOn: 'change'}),
+      password: new FormControl('', { validators:  [Validators.required, Validators.minLength(4), Validators.maxLength(16)], updateOn: 'change' }),
+      confirmPassword: new FormControl('', {validators: [Validators.required, Validators.minLength(4), Validators.maxLength(16)], updateOn: 'change'}),
+    },
+    {
+      validators: this.MustMatch( 'password', 'confirmPassword')
+    },
+    );
+
 
     this.selectedCompany = {} as Company;
     this.newEmployee = {} as Employee;
@@ -55,6 +57,22 @@ export class SignUpComponent implements OnInit{
       this.companies = data; // Guarda todas las empresas en this.companies      
       this.selectedCompany = this.companies[0];
     });
+  }
+
+  MustMatch( password: any, confirmPassword: any) {
+    return (formGroup: FormGroup) => {
+      const passwordControl = formGroup.controls[password];
+      const passwordConfirmControl = formGroup.controls[confirmPassword];
+
+      if (passwordConfirmControl.errors && !passwordConfirmControl.errors['mustMatch']) {
+        return;
+      }
+      if (passwordControl.value !== passwordConfirmControl.value) {
+        passwordConfirmControl.setErrors({ MustMatch: true });
+      } else {
+        passwordConfirmControl.setErrors(null);
+      }
+    };
   }
   
 
@@ -74,11 +92,20 @@ export class SignUpComponent implements OnInit{
   addEmployee() {
     console.log(this.newEmployee);
     console.log(this.selectedCompany.companyId);
-    this.authService.postEmployee(this.newEmployee, this.selectedCompany.companyId).subscribe((data: Employee) => {
-      this.newEmployee = data;
-      this.showNewEmployeeSuccess();
-      this.navigateToLogin();
-    });
+    if(this.registerForm.valid){
+
+      this.newEmployee.employeeId = 0;
+      this.newEmployee.dni = this.registerForm.value.dni;
+      this.newEmployee.employeeName = this.registerForm.value.employeeName;
+      this.newEmployee.password = this.registerForm.value.password;
+      this.newEmployee.email = this.registerForm.value.email;
+
+      this.authService.postEmployee(this.newEmployee, this.selectedCompany.companyId).subscribe((data: Employee) => {
+        this.newEmployee = data;
+        this.showNewEmployeeSuccess();
+        this.navigateToLogin();
+      });
+    }
     
   }
     
