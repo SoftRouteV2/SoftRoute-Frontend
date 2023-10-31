@@ -10,37 +10,93 @@
     <p-dropdown [options]="packageTypes" [(ngModel)]="selectedPackageType" optionLabel="label" placeholder="Type of Package" [style]="{'width': '100%'}"></p-dropdown>
   </div>
 
-  <input id="weight" [(ngModel)]="packageWeight" type="number" placeholder="Weight" pInputText class="w-full mb-3 custom-input-field">
-  <input id="height" [(ngModel)]="packageHeight" type="number" placeholder="Height" pInputText class="w-full mb-3 custom-input-field">
-  <input id="width" [(ngModel)]="packageWidth" type="number" placeholder="Width" pInputText class="w-full mb-3 custom-input-field">
-  <input id="length" [(ngModel)]="packageLength" type="number" placeholder="Length" pInputText class="w-full mb-3 custom-input-field">
+  <input id="weight" [(ngModel)]="packageWeight" type="number" placeholder="Weight" pInputText class="w-full mb-3 custom-input-field" [formControl]="weightInput">
+
+<!-- Display validation message if the input is invalid -->
+<div *ngIf="weightInput.invalid && (weightInput.dirty || weightInput.touched)" class="error-text">
+  <div *ngIf="weightInput.hasError('required')">Weight is required.</div>
+  <div *ngIf="weightInput.hasError('pattern')">Invalid weight format.</div>
+</div>
+
+
+<input id="height" [(ngModel)]="packageHeight" type="number" placeholder="Height" pInputText class="w-full mb-3 custom-input-field" [formControl]="heightInput">
+
+<div *ngIf="heightInput.invalid && (heightInput.dirty || heightInput.touched)" class="error-text">
+  <div *ngIf="heightInput.hasError('required')">Height is required.</div>
+  <div *ngIf="heightInput.hasError('pattern')">Invalid height format.</div>
+</div>
+
+<input id="width" [(ngModel)]="packageWidth" type="number" placeholder="Width" pInputText class="w-full mb-3 custom-input-field" [formControl]="widthInput">
+
+<div *ngIf="widthInput.invalid && (widthInput.dirty || widthInput.touched)" class="error-text">
+  <div *ngIf="widthInput.hasError('required')">Width is required.</div>
+  <div *ngIf="widthInput.hasError('pattern')">Invalid width format.</div>
+</div>
+
+<input id="length" [(ngModel)]="packageLength" type="number" placeholder="Length" pInputText class="w-full mb-3 custom-input-field" [formControl]="lengthInput">
+
+<div *ngIf="lengthInput.invalid && (lengthInput.dirty || lengthInput.touched)" class="error-text">
+  <div *ngIf="lengthInput.hasError('required')">Length is required.</div>
+  <div *ngIf="lengthInput.hasError('pattern')">Invalid length format.</div>
+</div>
+
   <!-- <input id="quantity" [(ngModel)]="quantity" type="number" placeholder="Quantity" pInputText class="w-full mb-3 custom-input-field "> -->
 
   <label for="information" class="block text-900 font-medium mb-2">Shipment Information</label>
 
-  <input id="freight" [(ngModel)]="freight" type="number" placeholder="Freight" pInputText class="w-full mb-3 custom-input-field ">
-  <input id="description" [(ngModel)]="description" type="text" placeholder="Description" pInputText class="w-full mb-3 custom-input-field">
-   <input id="date" [(ngModel)]="selectedDate" type="date" placeholder="Date" pInputText class="w-full mb-3 custom-input-field">
+  <input id="freight" [(ngModel)]="freight" type="number" placeholder="Freight" pInputText class="w-full mb-3 custom-input-field" [formControl]="freightInput">
+
+<div *ngIf="freightInput.invalid && (freightInput.dirty || freightInput.touched)" class="error-text">
+  <div *ngIf="freightInput.hasError('required')">Freight is required.</div>
+  <div *ngIf="freightInput.hasError('pattern')">Invalid freight format.</div>
+</div>
+
+
+
+<input id="description" [(ngModel)]="description" type="text" placeholder="Description" pInputText class="w-full mb-3 custom-input-field" [formControl]="descriptionInput">
+
+<div *ngIf="descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)" class="error-text">
+  <div *ngIf="descriptionInput.hasError('required')">Description is required.</div>
+</div>
+
+
+<input id="date" [(ngModel)]="selectedDate" type="date" placeholder="Date" pInputText class="w-full mb-3 custom-input-field" [formControl]="dateInput">
+
+<div *ngIf="dateInput.invalid && (dateInput.dirty || dateInput.touched)" class="error-text">
+  <div *ngIf="dateInput.hasError('required')">Date is required.</div>
+</div>
+
 
   <label for="sender" class="block text-900 font-medium mb-2">Sender Information</label>
-  <input id="senderName" [(ngModel)]="senderName" type="text" placeholder="Name" pInputText class="w-full mb-3 custom-input-field">
-  <input id="senderEmail" [formControl]="senderEmailFormControl" type="text" placeholder="Email" [(ngModel)]="senderEmail"  pInputText class="w-full mb-3 custom-input-field">
+  <input id="senderName" [(ngModel)]="senderName" type="text" placeholder="Full Name" pInputText class="w-full mb-3 custom-input-field" [formControl]="senderNameInput">
+
+<div *ngIf="senderNameInput.invalid && (senderNameInput.dirty || senderNameInput.touched)" class="error-text">
+  <div *ngIf="senderNameInput.hasError('required')">Sender Name is required.</div>
+</div>
+  <!-- <input id="senderEmail" [formControl]="senderEmailFormControl" type="text" placeholder="Email" [(ngModel)]="senderEmail"  pInputText class="w-full mb-3 custom-input-field">
   <div *ngIf="senderEmailFormControl.hasError('email') && senderEmailFormControl.touched" class="error-text">
     Please enter a valid email.
-  </div>
+  </div> -->
 
   <div class="w-full mb-3 custom-input-field">
     <p-dropdown [options]="documentTypes" [(ngModel)]="selectedDocumentType" optionLabel="label" placeholder="Type of Document" [style]="{'width': '100%'}"></p-dropdown>
   </div>
 
-  <input id="documentNumber" [(ngModel)]="documentNumber" [formControl]="documentNumberInput" type="number" placeholder="Document Number" pInputText class="w-full mb-3 custom-input-field ">
-<div *ngIf="documentNumberInput.hasError('pattern') && documentNumberInput.touched" class="error-text">
-  Please enter exactly 8 numbers.
+  <input id="documentNumber" [(ngModel)]="documentNumber" type="number" placeholder="Document Number" pInputText class="w-full mb-3 custom-input-field" [formControl]="documentNumberInput">
+
+<div *ngIf="documentNumberInput.invalid && (documentNumberInput.dirty || documentNumberInput.touched)" class="error-text">
+  <div *ngIf="documentNumberInput.hasError('required')">Document Number is required.</div>
+  <div *ngIf="documentNumberInput.hasError('pattern')">Please enter exactly 8 numbers.</div>
 </div>
 
 
   <label for="consignee" class="block text-900 font-medium mb-2">Consignee Information</label>
-  <input id="consigneeName" [(ngModel)]="consigneeName" type="text" placeholder="Full Name" pInputText class="w-full mb-3 custom-input-field">
+
+  <input id="consigneeName" [(ngModel)]="consigneeName" type="text" placeholder="Full Name" pInputText class="w-full mb-3 custom-input-field" [formControl]="consigneeNameInput">
+
+<div *ngIf="consigneeNameInput.invalid && (consigneeNameInput.dirty || consigneeNameInput.touched)" class="error-text">
+  <div *ngIf="consigneeNameInput.hasError('required')">Consignee Name is required.</div>
+</div>
 
 
   <label for="destination" class="block text-900 font-medium mb-2">Destination</label>
@@ -50,7 +106,7 @@
     </div>
 
 
-  <p-button label="Add Shipment"  (onClick)="validateShimentData()" icon="pi pi-send" styleClass="w-full custom-button"></p-button>
+  <p-button label="Add Shipment"  (onClick)="validateShipmentData()" icon="pi pi-send" styleClass="w-full custom-button"></p-button>
 
 
 </div>

@@ -56,7 +56,17 @@ export class AddShipmentComponent {
   freight: number | undefined;
   documentNumber: number | undefined;
 
-  numberInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
+  weightInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
+  heightInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
+  widthInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
+  lengthInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
+  freightInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
+  descriptionInput: FormControl = new FormControl('', [Validators.required]);
+  dateInput: FormControl = new FormControl('', [Validators.required]);
+  senderNameInput: FormControl = new FormControl('', [Validators.required]);
+  consigneeNameInput: FormControl = new FormControl('', [Validators.required]);
+
+
   senderEmailFormControl = new FormControl('', [Validators.required, Validators.email]);
   consigneeEmailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
@@ -72,25 +82,21 @@ export class AddShipmentComponent {
   ngOnInit(): void {
   }
 
-  validateShimentData(): void {
 
-      console.log(this.selectedPackageType);
-      console.log(this.packageWeight);
-      console.log(this.quantity);
-      console.log(this.freight);
-      console.log(this.description);
-      console.log(this.senderName);
-      console.log(this.senderEmail);
-      console.log(this.consigneeName);
-      console.log(this.consigneeEmail);
-      console.log(this.selectedDocumentType);
-      console.log(this.documentNumber);
-      console.log(this.selectedDestination);
-      console.log(this.selectedDate);
-
-
-
-      //create a Employee object
+  validateShipmentData(): void {
+    if (
+      this.weightInput.valid &&
+      this.heightInput.valid &&
+      this.widthInput.valid &&
+      this.lengthInput.valid &&
+      this.freightInput.valid &&
+      this.descriptionInput.valid &&
+      this.dateInput.valid &&
+      this.senderNameInput.valid &&
+      this.consigneeNameInput.valid &&
+      this.documentNumberInput.valid
+    ) {
+      // All form controls are valid, proceed with creating and submitting data to the backend.
       const employee: Employee = {
         id: 1,
         name: 'Paolo',
@@ -103,86 +109,71 @@ export class AddShipmentComponent {
 
       this.quantity = 11;
 
-      //create a Sender object
+        // Create a Sender object
       const sender: Sender = {
         id: 0,
         fullname: this.senderName,
-        dni: this.documentNumber!.toString()
-      }
+        dni: this.documentNumber!.toString(),
+      };
 
-      const createdSender = this.senderService.addSender(sender).subscribe( (data: any) => {
+      this.senderService.addSender(sender).subscribe((data: any) => {
+        if (data) {
+          const createdSender: Sender = {
+            id: data.senderId,
+            fullname: data.fullname,
+            dni: data.dni,
+          };
 
-          if (data){
+          // Create a Shipment object
+          const shipment: Shipment = {
+            id: 0,
+            description: this.description,
+            code: createdSender.id,
+            freight: this.freight!,
+            quantity: this.quantity!,
+            deliveredDate: this.selectedDate,
+            arrivalDate: this.selectedDate,
+            consignee: this.consigneeName,
+          };
 
-            const createdSender: Sender = {
-              id: data.senderId,
-              fullname: data.fullname,
-              dni: data.dni
-            };
+          this.shipmentService
+            .addShipment(shipment, employee.id.toString(), createdSender.id.toString())
+            .subscribe((data: any) => {
+              if (data) {
+                console.log("Shipment added");
+                // Create a Package object
+                const packageObj: Package = {
+                  id: 0,
+                  description: this.description,
+                  code: createdSender.id,
+                  weight: this.packageWeight!,
+                  length: this.packageLength!,
+                  width: this.packageWidth!,
+                  height: this.packageHeight!,
+                };
 
-
-                 //create a Shipment object
-      const shipment: Shipment = {
-        id: 0,
-        description: this.description,
-        code: createdSender.id,                               //THE ERROR WAS HERE, CANT HAVE SAME CODE
-        freight: this.freight!,
-        quantity: this.quantity!,
-        deliveredDate: this.selectedDate,
-        arrivalDate: this.selectedDate,
-        consignee: this.consigneeName,
-      }
-
-      this.shipmentService.addShipment(shipment,employee.id.toString(), createdSender.id.toString()).subscribe( (data: any) => {
-
-        if (data){
-          console.log("Shipment added");
-            //create a Package object
-       const packageObj: Package = {
-        id: 0,
-        description: this.description,
-        code: createdSender.id,                                 //THE ERROR WAS HERE, CANT HAVE SAME CODE
-        weight: this.packageWeight!,
-        length: this.packageLength!,
-        width: this.packageWidth!,
-        height: this.packageHeight!,
-       }
-
-       this.packageService.addPackage(packageObj, data.id).subscribe( (data: any) => {
-         if (data){
-           console.log("Package added");
-       }
-         }     );
-        }else{
-          console.log("Backend error in addShipment");
+                this.packageService
+                  .addPackage(packageObj, data.id)
+                  .subscribe((data: any) => {
+                    if (data) {
+                      console.log("Package added");
+                    }
+                  });
+              } else {
+                console.log("Backend error in addShipment");
+              }
+            });
+        } else {
+          console.log("Backend error in addSender");
         }
-
-      }
-      );
-
-
-          }else{
-            console.log("Backend error in addSender");
-          }
-
-        }
-      );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      });
+    } else {
+      // At least one or more form controls are invalid.
+      // You can display an error message or take appropriate action.
+      console.log("Form data is incomplete or incorrect. Please check the inputs.");
+    }
   }
+
 
   createSenderFromJson(sender: any): Sender{
     return {
