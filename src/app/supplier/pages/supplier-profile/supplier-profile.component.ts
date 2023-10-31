@@ -33,7 +33,7 @@ export class SupplierProfileComponent implements OnInit{
   getEmployee() {
     const user = this.authService.getEmployee();
     if (user !== null) {
-      this.user = user;
+      //this.user = user;
       this.getCompanyById(this.user.companyId);
     }
   }

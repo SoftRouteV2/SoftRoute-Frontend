@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import {catchError, retry} from "rxjs/operators";
 import {HttpClient,  HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {Employee} from "../../supplier/model/employee";
+import {Employee} from "src/app/security/model/employee";
+import { Company } from 'src/app/security/model/company';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,9 @@ import {Employee} from "../../supplier/model/employee";
 export class AuthService{
 
   private employee:Employee | null=null;
-
-  baseUrl = 'http://localhost:8081/api/v1/employee';
+  baseUrl = 'http://localhost:8081';
+  urlEmployee = `${this.baseUrl}/api/v1/employee`;
+  urlCompany  = `${this.baseUrl}/api/v1/company`;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -39,7 +41,7 @@ export class AuthService{
 
   // Obtener un Employee por email
   loginEmployeeByEmail(email: string): Observable<Employee> {
-    const url = `${this.baseUrl}/email/${email}`;
+    const url = `${this.urlEmployee}/email/${email}`;
     return this.http.get<Employee>(url, this.httpOptions).pipe(retry(2), catchError(this.handleError));
   }
 
@@ -48,8 +50,19 @@ export class AuthService{
   }
 
   getEmployeeById(id: number): Observable<Employee> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.urlEmployee}/${id}`;
     return this.http.get<Employee>(url, this.httpOptions).pipe(retry(2), catchError(this.handleError));
   }
+
+  getAllCompanies() : Observable<Company[]>{
+    return this.http.get<Company[]>(this.urlCompany, this.httpOptions).pipe(retry(2), catchError(this.handleError));
+
+  }
+
+  postEmployee(employee: Employee, companyId : number): Observable<Employee> {
+    const url = `${this.baseUrl}/api/v1/companies/${companyId}/employees`;
+    return this.http.post<Employee>(url, employee, this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  }
+
 
 }
