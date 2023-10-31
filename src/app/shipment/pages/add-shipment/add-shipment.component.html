@@ -32,7 +32,12 @@
   <div class="w-full mb-3 custom-input-field">
     <p-dropdown [options]="documentTypes" [(ngModel)]="selectedDocumentType" optionLabel="label" placeholder="Type of Document" [style]="{'width': '100%'}"></p-dropdown>
   </div>
-  <input id="documentNumber" [(ngModel)]="documentNumber" type="number" placeholder="Document Number" pInputText class="w-full mb-3 custom-input-field ">
+
+  <input id="documentNumber" [(ngModel)]="documentNumber" [formControl]="documentNumberInput" type="number" placeholder="Document Number" pInputText class="w-full mb-3 custom-input-field ">
+<div *ngIf="documentNumberInput.hasError('pattern') && documentNumberInput.touched" class="error-text">
+  Please enter exactly 8 numbers.
+</div>
+
 
   <label for="consignee" class="block text-900 font-medium mb-2">Consignee Information</label>
   <input id="consigneeName" [(ngModel)]="consigneeName" type="text" placeholder="Full Name" pInputText class="w-full mb-3 custom-input-field">

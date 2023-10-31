@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { SelectItem } from 'primeng/api';
+import {Sender} from "../../model/sender";
+import {Package} from "../../model/package";
+import {Shipment} from "../../model/shipment";
+import {Employee} from "../../../supplier/model/employee";
+import { ShipmentService } from '../../services/shipment.service';
+import { SenderService } from '../../services/sender.service';
+import { PackageService } from '../../services/package.service';
+
 
 
 @Component({
@@ -52,9 +60,14 @@ export class AddShipmentComponent {
   senderEmailFormControl = new FormControl('', [Validators.required, Validators.email]);
   consigneeEmailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
+  documentNumberInput: FormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^[0-9]{8}$/), // Use a regular expression to validate 8 digits.
+  ]);
 
 
-  constructor() { }
+
+  constructor(private shipmentService: ShipmentService, private senderService: SenderService, private packageService:PackageService ) { }
 
   ngOnInit(): void {
   }
@@ -75,6 +88,108 @@ export class AddShipmentComponent {
       console.log(this.selectedDestination);
       console.log(this.selectedDate);
 
+
+
+      //create a Employee object
+      const employee: Employee = {
+        id: 1,
+        name: 'Paolo',
+        email: 'paolo@gmail.com',
+        password: 'gmailcom@',
+        phone: 987654321,
+        image: 'url',
+        companyId: 1
+      }
+
+      this.quantity = 11;
+
+      //create a Sender object
+      const sender: Sender = {
+        id: 0,
+        fullname: this.senderName,
+        dni: this.documentNumber!.toString()
+      }
+
+      const createdSender = this.senderService.addSender(sender).subscribe( (data: any) => {
+
+          if (data){
+
+            const createdSender: Sender = {
+              id: data.senderId,
+              fullname: data.fullname,
+              dni: data.dni
+            };
+
+
+                 //create a Shipment object
+      const shipment: Shipment = {
+        id: 0,
+        description: this.description,
+        code: createdSender.id,                               //THE ERROR WAS HERE, CANT HAVE SAME CODE
+        freight: this.freight!,
+        quantity: this.quantity!,
+        deliveredDate: this.selectedDate,
+        arrivalDate: this.selectedDate,
+        consignee: this.consigneeName,
+      }
+
+      this.shipmentService.addShipment(shipment,employee.id.toString(), createdSender.id.toString()).subscribe( (data: any) => {
+
+        if (data){
+          console.log("Shipment added");
+            //create a Package object
+       const packageObj: Package = {
+        id: 0,
+        description: this.description,
+        code: createdSender.id,                                 //THE ERROR WAS HERE, CANT HAVE SAME CODE
+        weight: this.packageWeight!,
+        length: this.packageLength!,
+        width: this.packageWidth!,
+        height: this.packageHeight!,
+       }
+
+       this.packageService.addPackage(packageObj, data.id).subscribe( (data: any) => {
+         if (data){
+           console.log("Package added");
+       }
+         }     );
+        }else{
+          console.log("Backend error in addShipment");
+        }
+
+      }
+      );
+
+
+          }else{
+            console.log("Backend error in addSender");
+          }
+
+        }
+      );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+  createSenderFromJson(sender: any): Sender{
+    return {
+      id: sender.id,
+      fullname: sender.fullname,
+      dni: sender.dni
+    }
   }
 
 
