@@ -56,6 +56,7 @@ export class AddShipmentComponent {
   freight: number | undefined;
   documentNumber: number | undefined;
 
+
   weightInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
   heightInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
   widthInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
@@ -77,7 +78,9 @@ export class AddShipmentComponent {
 
 
 
-  constructor(private shipmentService: ShipmentService, private senderService: SenderService, private packageService:PackageService ) { }
+  constructor(private shipmentService: ShipmentService, private senderService: SenderService, private packageService:PackageService ) {
+
+  }
 
   ngOnInit(): void {
   }
@@ -97,17 +100,12 @@ export class AddShipmentComponent {
       this.documentNumberInput.valid
     ) {
       // All form controls are valid, proceed with creating and submitting data to the backend.
-      const employee: Employee = {
-        id: 1,
-        name: 'Paolo',
-        email: 'paolo@gmail.com',
-        password: 'gmailcom@',
-        phone: 987654321,
-        image: 'url',
-        companyId: 1
-      }
 
-      this.quantity = 11;
+      //localStorage.getItem('employeeId');
+
+      const employeeId = localStorage.getItem('employeeId') as string;
+      console.log(employeeId);
+      this.quantity = 1;
 
         // Create a Sender object
       const sender: Sender = {
@@ -137,7 +135,7 @@ export class AddShipmentComponent {
           };
 
           this.shipmentService
-            .addShipment(shipment, employee.id.toString(), createdSender.id.toString())
+            .addShipment(shipment, employeeId, createdSender.id.toString())
             .subscribe((data: any) => {
               if (data) {
                 console.log("Shipment added");
