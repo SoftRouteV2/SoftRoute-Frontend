@@ -11,7 +11,7 @@ export class AppComponent {
   id = 1;
   options = [
     { path: `/supplier-home/${this.id}`, title: 'Home'},
-    { path: '', title: 'Plans'},
+    { path: '/add-shipment', title: 'Add Shipment'},
     { path: '', title: 'Notifications'},
     { path: `/supplier-inventory/${this.id}`, title: 'Inventory'},
     { path: `/supplier-profile/${this.id}`, title: 'Profile'}
