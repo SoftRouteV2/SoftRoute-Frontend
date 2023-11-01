@@ -1,0 +1,56 @@
+.custom-button{
+  background-color: #ff1100;
+  color: white;
+}
+
+.full-width-dropdown {
+  width: 100%;
+}
+
+.custom-input {
+   border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.center-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  padding-bottom: 50px;
+
+}
+
+.custom-input-field {
+  background-color: rgba(98, 0, 238, 0.1);
+  width: 100%;
+
+}
+
+.custom-input-field::placeholder {
+  color: #A065F5;
+}
+
+.error-text {
+  color: red;
+  font-size: 12px;
+
+}
+
+.title {
+  display: flex;
+  align-items: center; /* Alineación vertical en el centro */
+  justify-content: center;
+  font-family: Roboto, serif;
+  background: #7F00FF;
+  color: white;
+  font-size: 30px;
+  width: 40%;
+  margin-left: 0px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 50px;
+
+}
+
