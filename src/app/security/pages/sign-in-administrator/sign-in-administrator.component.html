@@ -41,6 +41,11 @@
         </div>
   
         <p-button (onClick)="navigateSignInHome()" label="Sign In" icon="pi pi-user" styleClass="w-full" [disabled]="!loginForm.valid"></p-button>
+        <p-dialog header="Error" [(visible)]="visible" [style]="{width: '50vw'}">
+          <p>
+              Password or email incorrect
+          </p>
+      </p-dialog>
       </div>
     </form>
   </div>

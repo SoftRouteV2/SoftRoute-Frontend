@@ -17,6 +17,7 @@ export class SignInAdministratorComponent{
   employee: Employee | null = null;
 
   loginForm!: FormGroup;
+  visible: boolean = false;
 
   constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
@@ -25,24 +26,29 @@ export class SignInAdministratorComponent{
     });
   }
 
+  showDialog() {
+    this.visible = true;
+  }
+
   navigateSignInHome() {
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
     this.authService.loginEmployeeByEmail(email).subscribe((data: any) => {
       this.employee = data;
-      if (this.employee != null) {
-        if (this.employee.password == password && this.employee.email == email) {
-          localStorage.setItem('employeeId', JSON.stringify(this.employee.employeeId));
-          this.router.navigate([routes.supplierHome]);
-        } else {
-          alert("Contraseña incorrecta");
-        }
+      if (this.employee?.password == password && this.employee?.email == email) {
+        localStorage.setItem('employeeId', JSON.stringify(this.employee?.employeeId));
+        this.router.navigate([routes.supplierHome]);
       } else {
-        alert("El usuario no existe");
+        console.log("Password incorrect");
+        this.showDialog();
       }
-    }
-
-    );
+      
+    }).add(() => {
+      if (this.employee == null) {
+        console.log("Employee not found");
+        this.showDialog();
+      }
+    });
   }
   navigateToSignUp() {
     this.router.navigate([routes.signUp]);
