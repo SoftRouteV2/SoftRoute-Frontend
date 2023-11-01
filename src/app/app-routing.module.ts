@@ -7,7 +7,11 @@ import {SignUpComponent} from "./security/pages/sign-up/sign-up.component";
 import {SignInAdministratorComponent} from "./security/pages/sign-in-administrator/sign-in-administrator.component";
 import {SignInClientComponent} from "./security/pages/sign-in-client/sign-in-client.component";
 import {CustomerTrackingComponent} from "./tracking/pages/customer-tracking/customer-tracking.component";
+
 import { AddShipmentComponent } from './shipment/pages/add-shipment/add-shipment.component';
+
+import { TrackingShipmentComponent } from './tracking/pages/tracking-shipment/tracking-shipment.component';
+
 
 
 export const routes = {
@@ -18,7 +22,8 @@ export const routes = {
   supplierProfile: 'supplier-profile',
   signInAdministrator: 'sign-in-administrator',
   signInClient: 'sign-in-client',
-  customerTracking: 'customer-tracking'
+  customerTracking: 'customer-tracking',
+  trackingShipment: 'tracking-shipment',
 };
 const appRoutes: Routes = [
   { path: '', redirectTo: routes.login, pathMatch: 'full' },
@@ -30,7 +35,7 @@ const appRoutes: Routes = [
   { path: routes.signInAdministrator, component:SignInAdministratorComponent },
   { path: routes.signInClient, component:SignInClientComponent },
   { path: routes.customerTracking, component:CustomerTrackingComponent },
-
+  { path: routes.trackingShipment, component:TrackingShipmentComponent }
 
 
 ];
