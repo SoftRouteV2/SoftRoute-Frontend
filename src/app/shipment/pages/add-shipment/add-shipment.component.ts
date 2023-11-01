@@ -8,6 +8,8 @@ import {Employee} from "../../../supplier/model/employee";
 import { ShipmentService } from '../../services/shipment.service';
 import { SenderService } from '../../services/sender.service';
 import { PackageService } from '../../services/package.service';
+import { Router } from '@angular/router';
+import { routes } from 'src/app/app-routing.module';
 
 
 
@@ -24,6 +26,7 @@ export class AddShipmentComponent {
   consigneeName: string='';
   consigneeEmail: string='';
   selectedDate: Date=new Date();
+  shipmentCode: number=0;
 
   destinations: SelectItem[] = [
     { label: 'Cusco', value: 'Cusco' },
@@ -56,7 +59,6 @@ export class AddShipmentComponent {
   freight: number | undefined;
   documentNumber: number | undefined;
 
-
   weightInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
   heightInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
   widthInput: FormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d+)?$/)]);
@@ -66,19 +68,19 @@ export class AddShipmentComponent {
   dateInput: FormControl = new FormControl('', [Validators.required]);
   senderNameInput: FormControl = new FormControl('', [Validators.required]);
   consigneeNameInput: FormControl = new FormControl('', [Validators.required]);
-
-
   senderEmailFormControl = new FormControl('', [Validators.required, Validators.email]);
   consigneeEmailFormControl = new FormControl('', [Validators.required, Validators.email]);
-
   documentNumberInput: FormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(/^[0-9]{8}$/), // Use a regular expression to validate 8 digits.
   ]);
 
 
+  displayModal: boolean = false;
+  displayErrorModal: boolean = false;
 
-  constructor(private shipmentService: ShipmentService, private senderService: SenderService, private packageService:PackageService ) {
+
+  constructor(private shipmentService: ShipmentService, private senderService: SenderService, private packageService:PackageService, private router: Router) {
 
   }
 
@@ -87,6 +89,7 @@ export class AddShipmentComponent {
 
 
   validateShipmentData(): void {
+
     if (
       this.weightInput.valid &&
       this.heightInput.valid &&
@@ -122,11 +125,14 @@ export class AddShipmentComponent {
             dni: data.dni,
           };
 
+          const stringDate = this.selectedDate.toString();
+          this.shipmentCode = this.generatedShipmentCode(createdSender.id, stringDate) ;
+
           // Create a Shipment object
           const shipment: Shipment = {
             id: 0,
             description: this.description,
-            code: createdSender.id,
+            code: this.shipmentCode,
             freight: this.freight!,
             quantity: this.quantity!,
             deliveredDate: this.selectedDate,
@@ -138,12 +144,12 @@ export class AddShipmentComponent {
             .addShipment(shipment, employeeId, createdSender.id.toString())
             .subscribe((data: any) => {
               if (data) {
-                console.log("Shipment added");
+
                 // Create a Package object
                 const packageObj: Package = {
                   id: 0,
                   description: this.description,
-                  code: createdSender.id,
+                  code: this.shipmentCode,
                   weight: this.packageWeight!,
                   length: this.packageLength!,
                   width: this.packageWidth!,
@@ -154,7 +160,7 @@ export class AddShipmentComponent {
                   .addPackage(packageObj, data.id)
                   .subscribe((data: any) => {
                     if (data) {
-                      console.log("Package added");
+                      this.showShipmentCode();
                     }
                   });
               } else {
@@ -166,9 +172,7 @@ export class AddShipmentComponent {
         }
       });
     } else {
-      // At least one or more form controls are invalid.
-      // You can display an error message or take appropriate action.
-      console.log("Form data is incomplete or incorrect. Please check the inputs.");
+       this.displayErrorModal = true;
     }
   }
 
@@ -181,6 +185,27 @@ export class AddShipmentComponent {
     }
   }
 
+  showShipmentCode(){
+    this.displayModal = true;
+  }
+
+  generatedShipmentCode(senderId: number, date: string): number {
+    const senderIdStr = senderId.toString().slice(0, 3).padEnd(3, '0'); // Changed from .slice(-3) to .slice(0, 3)
+    console.log(senderIdStr);
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate.getTime())) {
+      throw new Error('Invalid date object');
+    }
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = parsedDate.getDate().toString();
+    const shipmentCode = parseInt(senderIdStr + month + day);
+    return shipmentCode;
+}
+
+
+  navigateToHome() {
+    this.router.navigate([routes.supplierHome]);
+  }
 
 }
 

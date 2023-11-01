@@ -109,4 +109,22 @@
   <p-button label="Add Shipment"  (onClick)="validateShipmentData()" icon="pi pi-send" styleClass="w-full custom-button"></p-button>
 
 
+  <p-dialog header="Shipment Confirmation" [(visible)]="displayModal" [modal]="true" [draggable]="false" [resizable]="false" [style]="{width: '400px'}" (onHide)="navigateToHome()">
+    <div class="p-d-flex p-flex-column p-ai-center">
+      <i class="pi pi-check-circle" style="font-size: 3rem; color: green;"></i>
+      <h5>Shipment Registered Successfully!</h5>
+      <p>Your tracking code is: <strong> {{shipmentCode}} </strong></p>
+      <button pButton type="button" label="Close" (click)="navigateToHome()"  class="p-button-secondary"></button>
+    </div>
+  </p-dialog>
+
+   <p-dialog header="Error" [(visible)]="displayErrorModal" [modal]="true" [draggable]="false" [resizable]="false" [style]="{width: '400px'}"  >
+    <div class="p-d-flex p-flex-column p-ai-center">
+      <i class="pi pi-exclamation-triangle" style="font-size: 3rem; color: red;"></i>
+      <h5>There are missing fields!</h5>
+      <button pButton type="button" label="Close" (click)="displayErrorModal = false"  class="p-button-secondary"></button>
+    </div>
+
+  </p-dialog>
+
 </div>
