@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./tracking-shipment.component.css']
 })
 export class TrackingShipmentComponent {
-  
+
   constructor(private router: Router) { }
 
   navigateToback() {
