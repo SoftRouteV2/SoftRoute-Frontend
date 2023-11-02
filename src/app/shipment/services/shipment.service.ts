@@ -4,12 +4,13 @@ import {catchError, Observable, retry, throwError} from "rxjs";
 import {HttpClient} from "@angular/common/http";
  import { Shipment } from '../model/shipment';
 import { Package } from '../model/package';
+import { shipmentBackend } from '../model/shipmentBackend';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class ShipmentService extends TemplateService<Shipment> {
+export class ShipmentService extends TemplateService<any> {
 
   private shipment:Shipment | null=null;
   constructor(http:HttpClient) {
@@ -18,18 +19,12 @@ export class ShipmentService extends TemplateService<Shipment> {
 
   }
 
- 
+
   addShipment(shipment: Shipment, employeeId: String, senderId: String, destinationId: String): Observable<Shipment> {
     this.basePath = 'http://localhost:8090/api/v1/shipment?employeeId='+employeeId+'&senderId='+senderId+'&destinationId='+destinationId;
     return this.create(shipment);
   }
 
- 
-   getShipmentByCode(code: string): Observable<Shipment> {
-    this.basePath = 'http://localhost:8090/api/v1/shipment/code/'+code;
-    return this.http.get<Shipment>(this.basePath, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-    }
 
 
 }

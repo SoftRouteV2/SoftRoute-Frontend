@@ -20,11 +20,11 @@
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Shipment's code</label>
             <label for="ordeId" class="block text-900 font-medium mb-2">{{shipment?.code}}</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Origin</label>
-            <label for="ordeId" class="block text-900 font-medium mb-2">Lima</label>
+            <label for="ordeId" class="block text-900 font-medium mb-2">{{destination?.departure}}</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Shipment departure day</label>
             <label for="ordeId" class="block text-900 font-medium mb-2">{{ shipment?.deliveredDate | date: 'yyyy-MM-dd' }}</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Destination</label>
-            <label for="ordeId" class="block text-900 font-medium mb-2">Trujillo</label>
+            <label for="ordeId" class="block text-900 font-medium mb-2">{{destination?.arrival}}</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Shipment arrival day</label>
             <label for="ordeId" class="block text-900 font-medium mb-2">{{ shipment?.arrivalDate | date: 'yyyy-MM-dd' }}</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Status</label>

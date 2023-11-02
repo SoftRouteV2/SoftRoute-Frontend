@@ -34,7 +34,7 @@ export class SignUpComponent implements OnInit{
   registered: boolean = false;
 
   constructor(private router: Router, private employeeService:EmployeeService,
-    private companyService:CompanyService, private messageService:MessageService, 
+    private companyService:CompanyService, private messageService:MessageService,
     private authService : AuthService, private formBuilder: FormBuilder) {
 
     this.registerForm = this.formBuilder.group({
@@ -55,7 +55,7 @@ export class SignUpComponent implements OnInit{
 
   ngOnInit(): void {
     this.authService.getAllCompanies().subscribe((data: Company[]) => {
-      this.companies = data; // Guarda todas las empresas en this.companies      
+      this.companies = data; // Guarda todas las empresas en this.companies
       this.selectedCompany = this.companies[0];
     });
   }
@@ -82,7 +82,7 @@ export class SignUpComponent implements OnInit{
       }
     };
   }
-  
+
 
   showErrorPassWord() {
     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Passwords do not match' });
@@ -122,13 +122,13 @@ export class SignUpComponent implements OnInit{
         this.showDialog();
       }
     }
-    
+
   }
 
   verifyUserUnregistered() {
     this.registered = false;
     var req = new XMLHttpRequest();
-    req.open('GET', `http://localhost:8081/api/v1/employee/email/${this.registerForm.get("email")?.value}`, false);
+    req.open('GET', `http://localhost:8090/api/v1/employee/email/${this.registerForm.get("email")?.value}`, false);
     req.send(null);
     if (req.status == 200) {
       var user = JSON.parse(req.responseText);
@@ -136,7 +136,7 @@ export class SignUpComponent implements OnInit{
         this.registered = true;
       }
     }
-    
+
   }
-    
+
 }
