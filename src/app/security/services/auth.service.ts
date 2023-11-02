@@ -11,7 +11,7 @@ import { Company } from 'src/app/security/model/company';
 export class AuthService{
 
   private employee:Employee | null=null;
-  baseUrl = 'http://localhost:8081';
+  baseUrl = 'http://localhost:8090';
   urlEmployee = `${this.baseUrl}/api/v1/employee`;
   urlCompany  = `${this.baseUrl}/api/v1/company`;
 
@@ -20,7 +20,7 @@ export class AuthService{
       'Content-Type': 'application/json',
     }),
   };
-  
+
   constructor(private http: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
