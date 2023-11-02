@@ -18,10 +18,20 @@ export class ShipmentService extends TemplateService<Shipment> {
 
   }
 
+ 
   addShipment(shipment: Shipment, employeeId: String, senderId: String, destinationId: String): Observable<Shipment> {
-
     this.basePath = 'http://localhost:8090/api/v1/shipment?employeeId='+employeeId+'&senderId='+senderId+'&destinationId='+destinationId;
     return this.create(shipment);
   }
 
+ 
+   getShipmentByCode(code: string): Observable<Shipment> {
+    this.basePath = 'http://localhost:8090/api/v1/shipment/code/'+code;
+    return this.http.get<Shipment>(this.basePath, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+    }
+
+
 }
+
+

@@ -14,7 +14,7 @@ export class TemplateService<T> {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

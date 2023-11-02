@@ -1,11 +1,11 @@
 
 <p-toolbar>
-    <ng-template pTemplate="center">
-        <span class="text-primary font-semibold text-3xl">Shipment Tracking</span>
-    </ng-template>
-    <ng-template pTemplate="end">
-        <p-button (onClick)="navigateToSignClient()"  label="Back" icon="pi pi-times" styleClass="p-button-danger"></p-button>
-    </ng-template>
+  <ng-template pTemplate="center">
+      <span class="text-primary font-semibold text-3xl">Shipment Tracking</span>
+  </ng-template>
+  <ng-template pTemplate="end">
+      <p-button (onClick)="navigateToSignClient()"  label="Back" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+  </ng-template>
 </p-toolbar>
 
 
@@ -18,24 +18,24 @@
         </div>
         <div>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Shipment's code</label>
-            <label for="ordeId" class="block text-900 font-medium mb-2">12345678900</label>
+            <label for="ordeId" class="block text-900 font-medium mb-2">{{shipment?.code}}</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Origin</label>
             <label for="ordeId" class="block text-900 font-medium mb-2">Lima</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Shipment departure day</label>
-            <label for="ordeId" class="block text-900 font-medium mb-2">22/10/2023</label>
+            <label for="ordeId" class="block text-900 font-medium mb-2">{{ shipment?.deliveredDate | date: 'yyyy-MM-dd' }}</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Destination</label>
             <label for="ordeId" class="block text-900 font-medium mb-2">Trujillo</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Shipment arrival day</label>
-            <label for="ordeId" class="block text-900 font-medium mb-2">23/10/2023</label>
+            <label for="ordeId" class="block text-900 font-medium mb-2">{{ shipment?.arrivalDate | date: 'yyyy-MM-dd' }}</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Status</label>
             <label for="ordeId" class="block text-900 font-medium mb-2">In process</label>
             <label for="shipmentCode" class="block text-900 font-semibold mb-2">Real time location</label>
-            <label for="ordeId" class="block text-900 font-medium mb-2">Panamerica sur</label>
+            <label for="ordeId" class="block text-900 font-medium mb-2">Loading...</label>
 
-    
-    
+
+
         </div>
       </div>
     </div>
-    
+
 </body>
