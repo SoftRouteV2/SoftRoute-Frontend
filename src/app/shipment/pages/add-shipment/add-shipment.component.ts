@@ -10,6 +10,8 @@ import { SenderService } from '../../services/sender.service';
 import { PackageService } from '../../services/package.service';
 import { Router } from '@angular/router';
 import { routes } from 'src/app/app-routing.module';
+import { Destination } from '../../model/destination';
+import { DestinationService } from '../../services/destination.service';
 
 
 
@@ -35,7 +37,8 @@ export class AddShipmentComponent {
     { label: 'Cajamarca', value: 'Cajamarca' },
   ];
 
-  selectedDestination: string='';
+  selectedDestination: { value: string } = { value: '' };
+  selectedOrigin: { value: string } = { value: '' };
 
   documentTypes: SelectItem[] = [
     { label: 'DNI', value: 'DNI' },
@@ -80,7 +83,11 @@ export class AddShipmentComponent {
   displayErrorModal: boolean = false;
 
 
-  constructor(private shipmentService: ShipmentService, private senderService: SenderService, private packageService:PackageService, private router: Router) {
+  constructor(private shipmentService: ShipmentService,
+     private senderService: SenderService,
+      private packageService:PackageService,
+      private destinationService: DestinationService,
+      private router: Router) {
 
   }
 
@@ -102,9 +109,6 @@ export class AddShipmentComponent {
       this.consigneeNameInput.valid &&
       this.documentNumberInput.valid
     ) {
-      // All form controls are valid, proceed with creating and submitting data to the backend.
-
-      //localStorage.getItem('employeeId');
 
       const employeeId = localStorage.getItem('employeeId') as string;
       console.log(employeeId);
@@ -128,8 +132,17 @@ export class AddShipmentComponent {
           const stringDate = this.selectedDate.toString();
           this.shipmentCode = this.generatedShipmentCode(createdSender.id, stringDate) ;
 
-          // Create a Shipment object
-          const shipment: Shipment = {
+
+          const destionation : Destination = {
+            destinationId: 0,
+            departure: this.selectedOrigin.value,
+            arrival: this.selectedDestination.value
+          }
+
+          this.destinationService.addDestination(destionation).subscribe((destination: any) => {
+            if (destination) {
+
+           const shipment: Shipment = {
             id: 0,
             description: this.description,
             code: this.shipmentCode,
@@ -141,7 +154,7 @@ export class AddShipmentComponent {
           };
 
           this.shipmentService
-            .addShipment(shipment, employeeId, createdSender.id.toString())
+            .addShipment(shipment, employeeId, createdSender.id.toString(), destination.destinationId.toString())
             .subscribe((data: any) => {
               if (data) {
 
@@ -167,6 +180,22 @@ export class AddShipmentComponent {
                 console.log("Backend error in addShipment");
               }
             });
+
+
+            }else
+            {
+              console.log("Backend error in addDestination");
+            }
+          });
+
+
+
+
+
+
+
+
+
         } else {
           console.log("Backend error in addSender");
         }
