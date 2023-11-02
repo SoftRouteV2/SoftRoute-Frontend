@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { ShipmentService } from 'src/app/shipment/services/shipment.service';
 import { Shipment } from 'src/app/shipment/model/shipment';
 import { Package } from 'src/app/shipment/model/package';
+import { Destination } from 'src/app/shipment/model/destination';
+import { ShipmentBackendService } from 'src/app/shipment/services/shipment-backend.service';
+import { shipmentBackend } from 'src/app/shipment/model/shipmentBackend';
 
 @Component({
   selector: 'app-tracking-shipment',
@@ -12,11 +15,12 @@ import { Package } from 'src/app/shipment/model/package';
 })
 export class TrackingShipmentComponent {
 
-  constructor(private router: Router, private shipmentService: ShipmentService) { }
+  constructor(private router: Router, private shipmentService: ShipmentBackendService) { }
 
   shipmentCode: string = '';
-  shipment : Shipment | null = null;
+  shipment : shipmentBackend | null = null;
   package : Package | null = null;
+  destination: Destination | null = null;
 
 
   //wanna set data in init
@@ -24,8 +28,6 @@ export class TrackingShipmentComponent {
     this.shipmentCode = localStorage.getItem('shipmentCode')!;
     //this.getPackages();
     this.getShipment();
-
-
 
   }
 
@@ -37,14 +39,6 @@ export class TrackingShipmentComponent {
   }
 
 
-  // getPackages() {
-  //   this.shipmentService.getPackagesByShipmentCode(this.shipmentCode).subscribe( (packages) => {
-  //     this.package = packages;
-  //   }, (error) => {
-  //     alert('Shipment code not found');
-  //     return;
-  //   });
-  // }
 
   getShipment() {
     this.shipmentService.getShipmentByCode(this.shipmentCode).subscribe( (shipmentBack) => {
@@ -54,7 +48,9 @@ export class TrackingShipmentComponent {
         return;
       }
 
-      this.shipment = shipmentBack;
+      this.shipment = shipmentBack as shipmentBackend;
+      this.destination = this.shipment.destination;
+
     }, (error) => {
       alert('Shipment code not found');
       return;

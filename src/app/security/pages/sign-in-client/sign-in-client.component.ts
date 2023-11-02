@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { routes } from '../../../app-routing.module';
 import { FormControl, Validators } from '@angular/forms';
 import { ShipmentService } from 'src/app/shipment/services/shipment.service';
+import { ShipmentBackendService } from 'src/app/shipment/services/shipment-backend.service';
 @Component({
   selector: 'app-sign-in-client',
   templateUrl: './sign-in-client.component.html',
   styleUrls: ['./sign-in-client.component.css']
 })
 export class SignInClientComponent {
-  constructor(private router: Router, private shipmentService: ShipmentService) { }
+  constructor(private router: Router, private shipmentService: ShipmentBackendService) { }
 
   shipmentCode: string = '';
   shipmentCodeInput = new FormControl('', Validators.required);
