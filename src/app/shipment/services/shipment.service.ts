@@ -15,13 +15,13 @@ export class ShipmentService extends TemplateService<any> {
   private shipment:Shipment | null=null;
   constructor(http:HttpClient) {
     super(http);
-    this.basePath = 'http://localhost:8090/api/v1/shipment';
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/shipment';
 
   }
 
 
   addShipment(shipment: Shipment, employeeId: String, senderId: String, destinationId: String): Observable<Shipment> {
-    this.basePath = 'http://localhost:8090/api/v1/shipment?employeeId='+employeeId+'&senderId='+senderId+'&destinationId='+destinationId;
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/shipment?employeeId='+employeeId+'&senderId='+senderId+'&destinationId='+destinationId;
     return this.create(shipment);
   }
 

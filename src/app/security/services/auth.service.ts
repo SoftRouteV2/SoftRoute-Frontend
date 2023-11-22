@@ -10,14 +10,8 @@ import { Company } from 'src/app/security/model/company';
 })
 export class AuthService{
 
-<<<<<<< HEAD
-  private user:Employee | null=null;
-  constructor(http:HttpClient) {
-    super(http);
-    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/employee';
-=======
   private employee:Employee | null=null;
-  baseUrl = 'http://localhost:8090';
+  baseUrl = 'https://sofroute.azurewebsites.net';
   urlEmployee = `${this.baseUrl}/api/v1/employee`;
   urlCompany  = `${this.baseUrl}/api/v1/company`;
 
@@ -40,7 +34,6 @@ export class AuthService{
     return throwError(
       'something happened with request, please try again later'
     );
->>>>>>> feat/add-shipment
   }
 
 

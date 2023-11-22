@@ -11,12 +11,12 @@ export class PackageService extends TemplateService<Package> {
 
   constructor(http: HttpClient) {
     super(http);
-    this.basePath = 'http://localhost:8090/api/v1/shipments';
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/shipment';
    }
 
    addPackage(packageObj: Package, shipmentId: String) : Observable<Package>{
 
-    this.basePath = 'http://localhost:8090/api/v1/shipments/'+shipmentId+'/packages';
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/shipments/'+shipmentId+'/packages';
     return this.create(packageObj);
   }
 }

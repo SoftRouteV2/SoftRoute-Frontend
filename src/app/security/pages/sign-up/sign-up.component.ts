@@ -128,7 +128,7 @@ export class SignUpComponent implements OnInit{
   verifyUserUnregistered() {
     this.registered = false;
     var req = new XMLHttpRequest();
-    req.open('GET', `http://localhost:8090/api/v1/employee/email/${this.registerForm.get("email")?.value}`, false);
+    req.open('GET', `https://sofroute.azurewebsites.net/api/v1/employee/email/${this.registerForm.get("email")?.value}`, false);
     req.send(null);
     if (req.status == 200) {
       var user = JSON.parse(req.responseText);

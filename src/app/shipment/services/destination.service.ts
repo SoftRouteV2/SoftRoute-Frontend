@@ -12,7 +12,7 @@ export class DestinationService extends TemplateService<Destination> {
   private destination:Destination | null=null;
   constructor(http:HttpClient) {
     super(http);
-    this.basePath = 'http://localhost:8090/api/v1/destination';
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/destination';
 
   }
 

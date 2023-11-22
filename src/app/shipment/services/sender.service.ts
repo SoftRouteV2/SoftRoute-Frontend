@@ -11,7 +11,7 @@ export class SenderService extends TemplateService<Sender> {
 
   constructor(http: HttpClient) {
     super(http);
-    this.basePath = 'http://localhost:8090/api/v1/sender';
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/sender';
   }
 
   addSender(sender: Sender): Observable<Sender> {

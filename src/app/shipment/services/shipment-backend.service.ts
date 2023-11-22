@@ -14,12 +14,12 @@ export class ShipmentBackendService extends TemplateService<shipmentBackend> {
   private shipment:shipmentBackend | null=null;
   constructor(http:HttpClient) {
     super(http);
-    this.basePath = 'http://localhost:8090/api/v1/shipment';
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/shipment';
 
   }
 
    getShipmentByCode(code: string): Observable<shipmentBackend> {
-    this.basePath = 'http://localhost:8090/api/v1/shipment/code/'+code;
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/shipment/code/'+code;
     return this.http.get<shipmentBackend>(this.basePath, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
     }
