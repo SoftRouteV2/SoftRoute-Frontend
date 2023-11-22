@@ -10,6 +10,6 @@ export class EmployeeService extends TemplateService<Employee>{
 
   constructor(http:HttpClient) {
     super(http);
-    this.basePath = 'http://localhost:3000/api/v1/employees';
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/employee';
   }
 }

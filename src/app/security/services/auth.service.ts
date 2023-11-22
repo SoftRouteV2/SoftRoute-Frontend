@@ -12,7 +12,7 @@ export class AuthService extends TemplateService<Employee>{
   private user:Employee | null=null;
   constructor(http:HttpClient) {
     super(http);
-    this.basePath = 'http://localhost:3000/api/v1/employees';
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/employee';
   }
   // Método para el inicio de sesión
   loginEmployee(email: string, password: string): Observable<boolean> {
