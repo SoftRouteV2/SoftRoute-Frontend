@@ -60,10 +60,7 @@ export class SignUpComponent implements OnInit{
     });
   }
 
-  showDialog() {
-    this.visible = true;
-  }
-  showDialog2() {
+  showDialogUserExist() {
     this.visible = true;
   }
 
@@ -111,15 +108,13 @@ export class SignUpComponent implements OnInit{
       if(!this.registered) {
         this.authService.postEmployee(this.newEmployee, this.selectedCompany.companyId).subscribe((data: Employee) => {
           this.newEmployee = data;
-          this.showNewEmployeeSuccess();
-          this.showDialog2();
           setTimeout(() => {
             this.navigateToLogin();
           }, 3000);
         });
       }
       else {
-        this.showDialog();
+        this.showDialogUserExist();
       }
     }
 
