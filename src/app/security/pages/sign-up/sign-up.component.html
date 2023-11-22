@@ -1,7 +1,7 @@
 <body class="flex flex-column justify-content-center min-h-screen">
 
 <div class="flex flex-wrap align-items-center justify-content-center pt-5 pb-5" >
-<form class="surface-card p-4 shadow-4 opacity-80 border-round w-full lg:w-6 justify-content-center"  >
+<form class="surface-card p-4 shadow-4 opacity-80 border-round w-full lg:w-6 justify-content-center" [formGroup]="registerForm">
   <div class="text-center mb-5">
     <img src="https://modalab.co/wp-content/uploads/2020/05/MODALAB_Iconos-14.png" alt="Image" height="100" class="mb-1">
     <div class="text-900 text-3xl font-medium mb-3">Welcome</div>
@@ -12,18 +12,21 @@
   <div >
     <label for="company" class="block text-900 font-medium mb-1">Company </label>
     <div class="p-inputgroup">
-    <span class="p-inputgroup-addon mb-3">
+      <span class="p-inputgroup-addon mb-3">
         <i class="pi pi-home "></i>
-    </span>
-      <input id="company" type="number"  pInputText placeholder="Company RUC"  class="w-full mb-3"  [(ngModel)]="rucCompany" name="rucCompany"/>
+      </span>
+      <p-dropdown class="p-inputgroup mb-3" [options]="companies" [(ngModel)]="selectedCompany" optionLabel="companyName" name="companyName"></p-dropdown>
     </div>
-
+    
     <label for="name" class="block text-900 font-medium mb-1">Name</label>
     <div class="p-inputgroup">
     <span class="p-inputgroup-addon mb-3">
         <i class="pi pi-user "></i>
     </span>
-      <input id="name" type="text"  pInputText placeholder="Username" class="w-full mb-3 " [(ngModel)]="newEmployee.name" name="name"/>
+      <input id="name" type="text"  pInputText placeholder="Username" class="w-full mb-3 " formControlName="employeeName" name="name"/>
+    </div>
+    <div *ngIf="registerForm.get('employeeName')?.invalid && registerForm.get('employeeName')?.touched">
+      <small class="text-red-600">Employee name is required</small>
     </div>
 
     <label for="email" class="block text-900 font-medium mb-2">Email</label>
@@ -31,36 +34,73 @@
     <span class="p-inputgroup-addon mb-3">
         <i class="pi pi-envelope "></i>
     </span>
-      <input id="email" type="text"  pInputText placeholder="Email address" class="w-full mb-3 " [(ngModel)]="newEmployee.email" name="email"/>
+      <input id="email" type="text"  pInputText placeholder="Email address" class="w-full mb-3 " formControlName="email" name="email"/>
+    </div>
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+      <small class="text-red-600">Email is required</small>
+    </div>
+    <div *ngIf="registerForm.get('email')?.errors?.['email']">
+      <small class="text-red-600">Please enter a valid email</small>
     </div>
 
-    <label for="phone" class="block text-900 font-medium mb-2">Phone</label>
+    <label for="phone" class="block text-900 font-medium mb-2">DNI</label>
     <div class="p-inputgroup">
     <span class="p-inputgroup-addon mb-3">
-        <i class="pi pi-phone "></i>
+        <i class="pi pi-id-card"></i>
     </span>
-      <input id="phone" type="number"  pInputText placeholder="99955599" class="w-full mb-3 " [(ngModel)]="newEmployee.phone" name="phone"/>
+      <input id="dni" type="text"  pInputText placeholder="123456789" class="w-full mb-3 " formControlName="dni" name="dni"/>
     </div>
-
+    <div id="dni" *ngIf="registerForm.get('dni')?.errors?.['required'] && registerForm.get('dni')?.touched">
+      <small class="text-red-600">DNI is required</small>
+    </div>
+    <div *ngIf="registerForm.get('dni')?.errors?.['minlength'] || registerForm.get('dni')?.errors?.['maxlength']">
+      <small class="text-red-600">DNI length should be 8 characters</small>
+    </div>
+  
 
     <label for="password" class="block text-900 font-medium mb-2">Password</label>
     <div class="p-inputgroup">
     <span class="p-inputgroup-addon mb-3">
         <i class="pi pi-unlock "></i>
     </span>
-      <input id="password" type="password"  pInputText placeholder="Password" class="w-full mb-3 " [(ngModel)]="newEmployee.password" name="name"/>
+      <input id="password" type="password"  pInputText placeholder="Password" class="w-full mb-3 " formControlName="password" name="password"/>
+    </div>
+    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+      <small class="text-red-600">Password is required</small>
+    </div>
+    <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+      <small class="text-red-600">Password length min is 4</small>
+    </div>
+    <div *ngIf="registerForm.get('password')?.errors?.['maxlength']">
+      <small class="text-red-600">Password length max is 16</small>
     </div>
 
-    <label for="password2" class="block text-900 font-medium mb-2">Repeat Password</label>
+    <label for="confirmPassword" class="block text-900 font-medium mb-2">Repeat Password</label>
     <div class="p-inputgroup">
     <span class="p-inputgroup-addon mb-3">
         <i class="pi pi-unlock "></i>
     </span>
-      <input id="password2" type="password"  pInputText placeholder="Password" class="w-full mb-3 " [(ngModel)]="password2" name="password2"/>
+      <input id="confirmPassword" type="password"  pInputText placeholder="Confirm Password" class="w-full mb-3 " formControlName="confirmPassword" name="confirmPassword"/>
+    </div>
+    <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+      <small class="text-red-600">Confirm password is required</small>
+    </div>
+    <div *ngIf="registerForm.get('confirmPassword')?.errors?.['MustMatch']">
+      <small class="text-red-600">Enter the same password</small>
     </div>
     <p-toast></p-toast>
-    <button pButton pRipple label="Register" (click)="addEmployee(newEmployee)" icon="pi pi-user" class="w-full"></button>
-  </div>;
+    <button pButton pRipple label="Register" (click)="addEmployee()" icon="pi pi-user" class="w-full" [disabled]="!registerForm.valid"></button>
+    <p-dialog header="Error" [(visible)]="visible" [style]="{width: '50vw'}">
+      <p>
+          This user is already registered
+      </p>
+    </p-dialog>
+    <p-dialog header="Succesful" [(visible)]="visible2" [style]="{width: '50vw'}">
+      <p>
+          You have registered Succesfully
+      </p>
+    </p-dialog>
+  </div>
 </form>
 </div>
 

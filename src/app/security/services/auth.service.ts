@@ -1,44 +1,75 @@
 import { Injectable } from '@angular/core';
-import {TemplateService} from "../../shared/services/template.service";
-import {catchError, Observable, retry, throwError} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {Employee} from "../../supplier/model/employee";
+import { Observable, throwError } from 'rxjs';
+import {catchError, retry} from "rxjs/operators";
+import {HttpClient,  HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {Employee} from "src/app/security/model/employee";
+import { Company } from 'src/app/security/model/company';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService extends TemplateService<Employee>{
+export class AuthService{
 
+<<<<<<< HEAD
   private user:Employee | null=null;
   constructor(http:HttpClient) {
     super(http);
     this.basePath = 'https://sofroute.azurewebsites.net/api/v1/employee';
+=======
+  private employee:Employee | null=null;
+  baseUrl = 'http://localhost:8090';
+  urlEmployee = `${this.baseUrl}/api/v1/employee`;
+  urlCompany  = `${this.baseUrl}/api/v1/company`;
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  constructor(private http: HttpClient) { }
+
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.log(`An error occurred: ${error.error.message}`);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, body was: ${error.error}`
+      );
+    }
+    return throwError(
+      'something happened with request, please try again later'
+    );
+>>>>>>> feat/add-shipment
   }
+
+
   // Método para el inicio de sesión
-  loginEmployee(email: string, password: string): Observable<boolean> {
-    return new Observable<boolean>((observer) => {
-      this.getAll().subscribe((employees: Employee[]) => {
-        const matchingEmployee = employees.find((employee: Employee) => {
-          return employee.email === email && employee.password === password;
-        });
 
-        if (matchingEmployee) {
-          this.user = matchingEmployee;
-          console.log('Inicio de sesión exitoso');
-          console.log('Nombre del empleado: ' + matchingEmployee.name);
-          observer.next(true); // Emite un valor `true` al observador
-          observer.complete();
-        } else {
-          console.log('No se encontró un empleado con el email y la contraseña coincidentes');
-          observer.next(false); // Emite un valor `false` al observador
-          observer.complete();
-        }
-      });
-    });
+  // Obtener un Employee por email
+  loginEmployeeByEmail(email: string): Observable<Employee> {
+    const url = `${this.urlEmployee}/email/${email}`;
+    return this.http.get<Employee>(url, this.httpOptions).pipe(retry(2), catchError(this.handleError));
   }
 
-  getEmployee():Employee | null{
-    return this.user;
+  getEmployee(): Employee | null {
+    return this.employee;
   }
+
+  getEmployeeById(id: number): Observable<Employee> {
+    const url = `${this.urlEmployee}/${id}`;
+    return this.http.get<Employee>(url, this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  }
+
+  getAllCompanies() : Observable<Company[]>{
+    return this.http.get<Company[]>(this.urlCompany, this.httpOptions).pipe(retry(2), catchError(this.handleError));
+
+  }
+
+  postEmployee(employee: Employee, companyId : number): Observable<Employee> {
+    const url = `${this.baseUrl}/api/v1/companies/${companyId}/employees`;
+    return this.http.post<Employee>(url, employee, this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  }
+
 
 }

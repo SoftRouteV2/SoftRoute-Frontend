@@ -9,23 +9,45 @@
       <a (click)="navigateToSignUp()" class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
     </div>
 
-    <div>
-      <label for="email1" class="block text-900 font-medium mb-2">Email</label>
-      <input id="email1" [(ngModel)]="email" type="text" placeholder="Email address" pInputText class="w-full mb-3">
-
-      <label for="password1" class="block text-900 font-medium mb-2">Password</label>
-      <input id="password1" [(ngModel)]="password" type="password" placeholder="Password" pInputText class="w-full mb-3">
-
-      <div class="flex align-items-center justify-content-between mb-6">
-        <div class="flex align-items-center">
-          <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-          <label for="rememberme1" class="text-900">Remember me</label>
+    <form [formGroup]="loginForm">
+      <div>
+        <label for="email" class="block text-900 font-medium mb-2">Email</label>
+        <input id="email" formControlName="email" type="text" placeholder="Email address" pInputText class="w-full mb-3">
+        
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          <small class="text-red-600">Email is required</small>
         </div>
-        <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot password?</a>
-      </div>
+        <div *ngIf="loginForm.get('email')?.errors?.['email']">
+          <small class="text-red-600">Please enter a valid email</small>
+        </div>
 
-      <p-button (onClick)="navigateSignInHome()" label="Sign In" icon="pi pi-user" styleClass="w-full"></p-button>
-    </div>
+        <label for="password" class="block text-900 font-medium mb-2">Password</label>
+        <input id="password" formControlName="password" type="password" placeholder="Password" pInputText class="w-full mb-3">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          <small class="text-red-600">Password is required</small>
+        </div>
+        <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+          <small class="text-red-600">Password length min is 4</small>
+        </div>
+        <div *ngIf="loginForm.get('password')?.errors?.['maxlength']">
+          <small class="text-red-600">Password length max is 16</small>
+        </div>
+        <div class="flex align-items-center justify-content-between mb-6">
+          <div class="flex align-items-center">
+            <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+            <label for="rememberme1" class="text-900">Remember me</label>
+          </div>
+          <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot password?</a>
+        </div>
+  
+        <p-button (onClick)="navigateSignInHome()" label="Sign In" icon="pi pi-user" styleClass="w-full" [disabled]="!loginForm.valid"></p-button>
+        <p-dialog header="Error" [(visible)]="visible" [style]="{width: '50vw'}">
+          <p>
+              Password or email incorrect
+          </p>
+        </p-dialog>
+      </div>
+    </form>
   </div>
 </div>
 
