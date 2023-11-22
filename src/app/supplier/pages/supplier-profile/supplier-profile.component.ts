@@ -17,7 +17,7 @@ export class SupplierProfileComponent implements OnInit{
   nombre: string = '';
   email: string = '';
   contrasena: string = '';
-  constructor( private authService: AuthService,private companyService:CompanyService ) {
+  constructor( private authService: AuthService, private companyService:CompanyService ) {
     this.user={} as Employee;
     this.companyData={} as Company;
   }
@@ -33,7 +33,7 @@ export class SupplierProfileComponent implements OnInit{
   getEmployee() {
     const user = this.authService.getEmployee();
     if (user !== null) {
-      this.user = user;
+      //this.user = user;
       this.getCompanyById(this.user.companyId);
     }
   }
@@ -47,7 +47,7 @@ export class SupplierProfileComponent implements OnInit{
   protected readonly console = console;
 
   updateEmployee() {
-    this.authService.update(this.user.id,this.user).subscribe();
-    console.log(this.authService.getById(this.user.id))
+    //this.authService.update(this.user.id,this.user).subscribe();
+    console.log(this.authService.getEmployeeById(this.user.id))
   }
 }

@@ -9,6 +9,6 @@ import {HttpClient} from "@angular/common/http";
 export class CompanyService extends TemplateService<Company>{
   constructor(http:HttpClient) {
     super(http);
-    this.basePath = 'http://localhost:3000/api/v1/companies';
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/company';
   }
 }

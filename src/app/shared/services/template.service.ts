@@ -6,7 +6,7 @@ import {catchError, Observable, retry, throwError} from "rxjs";
   providedIn: 'root'
 })
 export class TemplateService<T> {
-  basePath = 'http://localhost:3000/api/v1/resources';
+  basePath = 'https://sofroute.azurewebsites.net/api/v1/resources';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -14,7 +14,7 @@ export class TemplateService<T> {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
